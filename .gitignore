@@ -1,0 +1,25 @@
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+# .idea 和 node_modules 需要注意
+# 生成本地仓库
+# 1. git init
+# 2. git add *
+# 3. git commit -m "init gshop"
+# 创建远程仓库
+# 1. github 创建新项目
+# 2. 复制关联命令
+# 3. git remote add origin https://github.com/Se7suna/xxx
+# 4. git push origin master  推送关联
+
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
