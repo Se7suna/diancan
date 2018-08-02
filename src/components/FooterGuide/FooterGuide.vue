@@ -21,7 +21,7 @@
 <script>
 </script>
 <style lang="less">
-    @import url("http://at.alicdn.com/t/font_762088_7yede9dn2yn.css");
+    @import "http://at.alicdn.com/t/font_762088_7yede9dn2yn.css";
     .footer {
         display: flex;
         width: 100%;
