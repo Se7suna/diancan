@@ -15,7 +15,7 @@ yarn-error.log*
 # 1. github 创建新项目
 # 2. 复制关联命令
 # 3. git remote add origin https://github.com/Se7suna/xxx
-# 4. git push origin master  推送关联
+# 4. git push -u origin master  推送关联
 
 .idea
 .vscode

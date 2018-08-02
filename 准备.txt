@@ -29,7 +29,7 @@
                 vue-cli
                 eslint
         e. css预编译器
-                stylus
+                less
     4. 前台路由
         a. 一级路由
                 I. 首页
@@ -81,3 +81,24 @@
                         II. 后台处理请求, 返回数据
                 f. mock数据
                         模拟数据测试
+
+api --- 与后台交互模块文件夹
+common --- 通用资源文件夹 (fonts/img/stylus)
+components --- 非路由组件文件夹
+filters --- 自定义过滤器模块文件夹
+mock --- 模拟数据接口文件夹
+views/pages --- 路由组件文件夹
+router --- 路由器文件夹
+store --- vuex相关模块文件夹
+App.vue  应用组件
+main.js  入口 js
+
+流程
+    1. reset.css
+    2. viewport
+    3. fastclick
+    4. 创建路由器对象router/index.js
+    5. 引入路由
+    6. 测试路由
+    7. 编写组件
+    8. 编写相关 ajax请求

@@ -14,14 +14,15 @@
 </script>
 <style lang="less">
     .app {
-        width: 412px;
-        height: 737px;
+        box-sizing: border-box;
+        width: 414px;
+        height: 736px;
         border: 1px solid #3c3c3d;
         margin: 0 auto
     }
     .view {
         overflow: auto;
         width: 100%;
-        height: 681px;
+        height: 678px;
     }
 </style>
