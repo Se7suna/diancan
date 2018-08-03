@@ -102,12 +102,11 @@
     import Swiper from 'swiper'
     import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
     import ShopList from '../../components/ShopList/ShopList.vue'
-    import {reqAddress, reqFoodType} from '../../api'
+    import {reqAddress} from '../../api'
     export default {
         data () {
             return {
-                title: '',
-                foodtype: []
+                title: ''
             }
         },
         mounted () {
@@ -120,9 +119,6 @@
             })
             reqAddress('/address').then(result => {
                 this.title = result
-            })
-            reqFoodType('/foodtype').then(result => {
-                this.foodtype = result
             })
         },
         components: {
