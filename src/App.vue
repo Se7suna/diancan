@@ -13,6 +13,8 @@
     }
 </script>
 <style lang="less">
+    @import '../static/css/reset.css';
+    @import '../static/css/swiper.css';
     .app {
         box-sizing: border-box;
         width: 414px;

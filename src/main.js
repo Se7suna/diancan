@@ -4,6 +4,7 @@ import router from './router/index'
 import FastClick from 'fastclick'
 import store from './store'
 import './mock/mock.js'
+import 'lib-flexible'
 new Vue({
     el: '#app',
     components: {

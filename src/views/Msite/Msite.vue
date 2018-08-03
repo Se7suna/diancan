@@ -4,25 +4,66 @@
             <span slot="left" class="msite-header-left"><i class="iconfont icon-dingwei"></i></span>
             <router-link slot="right" class="msite-header-right" to="/login">登录</router-link>
         </HeaderTop>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <ul class="msite-ad">
-                        <li class="msite-ad-item" v-for="(item, index) in foodtype[0]" :key="index">
-                            <img :src="item.url">
-                            <p>{{item.name}}</p>
-                        </li>
-                    </ul>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <ul class="msite-ad">
+                            <li class="msite-ad-item">
+                                <img src="./img/a867c870b22bc74c87c348b75528djpeg.jpeg" alt="美食">
+                                <p>美食</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/76a23eb90dada42528bc41499d6f8jpeg.jpeg" alt="商超便利">
+                                <p>商超便利</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/60ac33f023d9074e13cd78f9b5964jpeg.jpeg" alt="午餐">
+                                <p>夜宵</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/dd7c960f08cdc756b1d3ad54978fdjpeg.jpeg" alt="果蔬生鲜">
+                                <p>果蔬生鲜</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/af108e256ebc9f02db599592ae655jpeg.jpeg" alt="医药健康">
+                                <p>医药健康</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/b02bd836411c016935d258b300cfejpeg.jpeg" alt="大牌5折">
+                                <p>大牌5折</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/c888acb2c8ba9e0c813f36ec9e90ajpeg.jpeg" alt="浪漫鲜花">
+                                <p>浪漫鲜花</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/b7ba9547aa700bd20d0420e1794a8jpeg.jpeg" alt="麻辣烫">
+                                <p>麻辣烫</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg" alt="地方菜系">
+                                <p>地方菜系</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/235761e50d391445f021922b71789jpeg.jpeg" alt="披萨意面">
+                                <p>披萨意面</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="msite-ad">
+                            <li class="msite-ad-item">
+                                <img src="./img/60ac33f023d9074e13cd78f9b5964jpeg.jpeg" alt="午餐">
+                                <p>夜宵</p>
+                            </li>
+                            <li class="msite-ad-item">
+                                <img src="./img/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg" alt="地方菜系">
+                                <p>地方菜系</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="swiper-slide">
-                    <ul class="msite-ad">
-                        <li class="msite-ad-item" v-for="(item, index) in foodtype[1]" :key="index">
-                            <img :src="item.url">
-                            <p>{{item.name}}</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                <!-- 如果需要分页器 -->
             <div class="swiper-pagination"></div>
         </div>
         <div class="msite-ad clearfix">
@@ -106,10 +147,10 @@
     }
     .ad-item() {
         position: relative;
-        width: 168px;
+        width: 166px;
         height: 138px;
         padding-top: 16px;
-        padding-left: 18px;
+        padding-left: 16px;
         background-color: #f8f8f8;
         h4 {
             font-size: 18px;
