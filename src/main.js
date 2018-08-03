@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import FastClick from 'fastclick'
+import store from './store'
+import './mock/mock.js'
 new Vue({
     el: '#app',
     components: {
@@ -15,5 +17,6 @@ new Vue({
           }, false)
         }
     },
-    router
+    router,
+    store
 })
