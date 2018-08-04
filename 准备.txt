@@ -95,10 +95,12 @@ main.js  入口 js
 
 流程
     1. reset.css
-    2. viewport
-    3. fastclick
-    4. 创建路由器对象router/index.js
-    5. 引入路由
-    6. 测试路由
-    7. 编写组件
+    2. fastclick
+    3. 创建路由器对象 router/index.js
+    4. 引入路由
+    5. 测试路由
+    6. 编写组件
+    7. 移动适配 px2rem-loader + lib-flexible
     8. 编写相关 ajax请求
+    9. config --- index.js 配置 proxyTable 本地跨域
+    10. vuex 管理数据

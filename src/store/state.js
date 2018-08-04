@@ -1,16 +1,9 @@
 // 状态对象模块
 export default {
-    // 坐标
-    jd: 123,
-    wd: 456,
     // 地址
-    address: {
-
-    },
+    address: '',
     // 食品分类
-    foodType: [
-
-    ],
+    foodType: [],
     // 商家
     shops: []
 }

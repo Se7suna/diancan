@@ -12,20 +12,21 @@ import {
 export default {
     // 异步获取数据
     getAddress ({commit, state}) {
-        // 发送ajax请求
-        const geohash = state.wd + ',' + state.jd
-        reqAddress(geohash).then(result => {
+        // 发送ajax请求, state里的数据可以直接使用
+        const URL = '/address'
+        reqAddress(URL).then(result => {
             // 提交mutation
-            commit(RECEIVE_ADDRESS, {result})
+            commit(RECEIVE_ADDRESS, result)
         })
     },
     async getFoodType ({commit}) {
-        const result = await reqFoodType()
-        commit(RECEIVE_FOODTYPE, {result})
+        const URL = '/foodtype'
+        const result = await reqFoodType(URL)
+        commit(RECEIVE_FOODTYPE, result)
     },
-    async getShops ({commit, state}) {
-        const {jd, wd} = state
-        const result = await reqShops(jd, wd)
-        commit(RECEIVE_SHOPS, {result})
+    async getShops ({commit}) {
+        const URL = '/shops'
+        const result = await reqShops(URL)
+        commit(RECEIVE_SHOPS, result)
     }
 }
