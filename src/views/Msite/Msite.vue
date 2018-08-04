@@ -4,8 +4,8 @@
             <span slot="left" class="msite-header-left"><i class="iconfont icon-dingwei"></i></span>
             <router-link slot="right" class="msite-header-right" to="/login">登录</router-link>
         </HeaderTop>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
+        <div class="swiper-container" v-if="foodTypes.length">
+            <div class="swiper-wrapper">
                     <div class="swiper-slide" v-for="(foodType, index) of foodTypes" :key="index">
                         <ul class="msite-ad">
                             <li class="msite-ad-item" v-for="(item, index) of foodType" :key="index">
@@ -15,9 +15,9 @@
                         </ul>
                     </div>
                 </div>
-            <div class="swiper-pagination"></div>
-        </div>
-        <div class="msite-ad clearfix">
+                <div class="swiper-pagination"></div>
+            </div>
+        <div class="msite-ad clearfix" v-if="foodTypes.length">
             <div class="msite-ad-left">
                 <h4>品质套餐</h4>
                 <p>搭配齐全吃得好</p>
@@ -31,7 +31,7 @@
                 <img src="./img/0fa0ed514c093a7138b0b9a50d61fpng.png">
             </div>
         </div>
-        <div class="msite-shop">
+        <div class="msite-shop" v-if="foodTypes.length">
             <div class="msite-shop-top">
                 <p>
                     <i class="iconfont icon-hengxian"></i>
@@ -46,6 +46,10 @@
                 </div>
             </div>
             <ShopList/>
+        </div>
+        <div class="wait" v-else>
+            <img src="../../../static/img/5-121204193Q8.gif">
+            <p>拼命加载中</p>
         </div>
     </div>
 </template>
@@ -136,6 +140,10 @@
     .swiper-container {
         width: 100%;
         height: 194px;
+    }
+    .wait {
+        text-align: center;
+        margin-top: 50%
     }
     .msite-ad{
         padding: 0 15px;
