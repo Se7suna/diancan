@@ -15,7 +15,7 @@
 <style lang="less">
     @import '../static/css/reset.css';
     @import '../static/css/swiper.css';
-    @import "http://at.alicdn.com/t/font_762088_etser0pus7e.css";
+    @import "http://at.alicdn.com/t/font_762088_8t9rz1ry6hp.css";
     .app {
         box-sizing: border-box;
         width: 414px;

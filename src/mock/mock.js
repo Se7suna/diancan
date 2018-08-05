@@ -43,19 +43,19 @@ Mock.mock('/foodtype', [
             'title': '披萨意面'
         },
         {
-            'img': Random.image('100x100', '#50B347', '#FFF', Random.cword(2)),
+            'img': Random.image('100x100', '#50B347', '#FFFFFF', 'm'),
             'title': Random.cword(2, 3)
         },
         {
-            'img': Random.image('100x100', '#4A7BF7', '#FFF', Random.cword(2)),
+            'img': Random.image('100x100', '#4A7BF7', '#FFFFFF', 'o'),
             'title': Random.cword(2, 3)
         },
         {
-            'img': Random.image('100x100', '#FF6600', '#FFF', Random.cword(2)),
+            'img': Random.image('100x100', '#FF6600', '#FFFFFF', 'c'),
             'title': Random.cword(2, 3)
         },
         {
-            'img': Random.image('100x100', '#894FC4', '#FFF', Random.cword(2)),
+            'img': Random.image('100x100', '#894FC4', '#FFFFFF', 'k'),
             'title': Random.cword(2, 3)
         }
 ])

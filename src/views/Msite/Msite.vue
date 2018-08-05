@@ -1,8 +1,8 @@
 <template>
     <div class="msite">
         <HeaderTop :title="$store.state.address">
-            <span slot="left" class="msite-header-left"><i class="iconfont icon-dingwei"></i></span>
-            <router-link slot="right" class="msite-header-right" to="/login">登录</router-link>
+            <i slot="left" class="iconfont icon-dingwei header-left"></i>
+            <router-link slot="right" class="header-right" to="/login">登录</router-link>
         </HeaderTop>
         <div class="swiper-container" v-if="foodTypes.length">
             <div class="swiper-wrapper">
@@ -58,6 +58,16 @@
     import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
     import ShopList from '../../components/ShopList/ShopList.vue'
     export default {
+        mounted () {
+            // 切换页面时 需要重新创建 swiper
+            new Swiper('.swiper-container', {
+                direction: 'horizontal',
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination'
+                }
+            })
+        },
         components: {
             HeaderTop,
             ShopList
@@ -86,12 +96,12 @@
                 this.$nextTick(() => {
                     // 创建轮播图
                     new Swiper('.swiper-container', {
-                    direction: 'horizontal',
-                    loop: true,
-                    pagination: {
-                        el: '.swiper-pagination'
-                    }
-                })
+                        direction: 'horizontal',
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination'
+                        }
+                    })
                 })
             }
         }
@@ -169,18 +179,6 @@
     }
     .swiper-pagination-bullet {
         background-color: #ccc
-    }
-    .msite-header-left i {
-        float: left;
-        margin-left: 16px;
-        font-size: 22px;
-    }
-    .msite-header-right {
-        float: right;
-        text-decoration: none;
-        color: #fff;
-        margin-right: 16px;
-        font-size: 16px;
     }
     .msite-ad-left {
         .ad-item();
