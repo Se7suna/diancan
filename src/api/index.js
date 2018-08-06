@@ -8,3 +8,5 @@ export const reqAddress = url => ajax(url)
 export const reqFoodType = url => ajax(url)
 // 3. 根据经纬度获取商家列表
 export const reqShops = url => ajax(url)
+// 4. 发送 ajax 请求获取验证码
+export const reqPwdImg = () => ajax('/getPwdImg')

@@ -5,6 +5,8 @@ import Search from '../views/Search/Search.vue'
 import Order from '../views/Order/Order.vue'
 import Profile from '../views/Profile/Profile.vue'
 import Login from '../views/Login/Login.vue'
+import LogPhone from '../components/LogPhone/LogPhone.vue'
+import LogPwd from '../components/LogPwd/LogPwd.vue'
 Vue.use(VueRouter)
 export default new VueRouter({
     routes: [
@@ -42,7 +44,18 @@ export default new VueRouter({
         },
         {
             path: '/login',
-            component: Login
+            redirect: '/login/phone',
+            component: Login,
+            children: [
+                {
+                    path: 'phone',
+                    component: LogPhone
+                },
+                {
+                    path: 'pwd',
+                    component: LogPwd
+                }
+            ]
         }
     ]
 })

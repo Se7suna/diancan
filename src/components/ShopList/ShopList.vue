@@ -234,7 +234,11 @@
                 background-color: #f07373;
             }
             .man {
-                .pref-ad()
+                .pref-ad();
+                max-width: 180px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
     }

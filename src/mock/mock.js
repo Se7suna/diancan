@@ -61,3 +61,9 @@ Mock.mock('/foodtype', [
 ])
 Mock.mock('/shops', {
 })
+// 模拟验证码
+Mock.mock('/getPwdImg', function () {
+    return Mock.mock({
+            url: Mock.Random.dataImage('70x30', Mock.mock({'regexp': /\w{6}/}).regexp)
+    })
+})
