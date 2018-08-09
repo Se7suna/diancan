@@ -63,6 +63,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
+    // 解决图片路径问题
     assetsPublicPath: './',
 
     /**

@@ -104,3 +104,6 @@ main.js  入口 js
     8. 编写相关 ajax请求
     9. config --- index.js 配置 proxyTable 本地跨域
     10. vuex 管理数据
+
+config index.js --- assetsPublicPath: './' --- 解决图片路径问题
+build utils.js --- publicPath: '../../' --- 解决css背景图片问题
