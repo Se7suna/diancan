@@ -155,6 +155,9 @@
         text-align: center;
         margin-top: 50%
     }
+    .msite {
+        height: 678px;
+    }
     .msite-ad{
         padding: 0 15px;
     }

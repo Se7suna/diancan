@@ -7,6 +7,10 @@ import Profile from '../views/Profile/Profile.vue'
 import Login from '../views/Login/Login.vue'
 import LogPhone from '../components/LogPhone/LogPhone.vue'
 import LogPwd from '../components/LogPwd/LogPwd.vue'
+import Shop from '../views/Shop/Shop.vue'
+import ShopEval from '../components/ShopEval/ShopEval.vue'
+import ShopChoose from '../components/ShopChoose/ShopChoose.vue'
+import ShopScore from '../components/ShopScore/ShopScore.vue'
 Vue.use(VueRouter)
 export default new VueRouter({
     routes: [
@@ -54,6 +58,25 @@ export default new VueRouter({
                 {
                     path: 'pwd',
                     component: LogPwd
+                }
+            ]
+        },
+        {
+            path: '/shop',
+            redirect: '/shop/choose',
+            component: Shop,
+            children: [
+                {
+                    path: 'eval',
+                    component: ShopEval
+                },
+                {
+                    path: 'choose',
+                    component: ShopChoose
+                },
+                {
+                    path: 'score',
+                    component: ShopScore
                 }
             ]
         }

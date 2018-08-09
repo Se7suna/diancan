@@ -15,9 +15,10 @@
 <style lang="less">
     @import '../static/css/reset.css';
     @import '../static/css/swiper.css';
-    @import "http://at.alicdn.com/t/font_762088_7qjyrezs6p2.css";
+    @import "https://at.alicdn.com/t/font_762088_459n55zp058.css";
     .app {
         box-sizing: border-box;
+        position: relative;
         width: 414px;
         height: 736px;
         border: 1px solid #3c3c3d;
@@ -26,6 +27,5 @@
     .view {
         overflow: auto;
         width: 100%;
-        height: 678px;
     }
 </style>

@@ -20,7 +20,7 @@
             </p>
             <div class="login_main_button">
                 <button class="login_main_yes">登录</button>
-                <button class="login_main_no" @click="$router.replace('/msite')">取消</button>
+                <button class="login_main_no" @click="$router.replace('/profile')">取消</button>
             </div>
             <a href="#" class="login_main_us">关于我们</a>
         </div>

@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li class="msite-shop-item">
+        <li class="msite-shop-item" @click="$router.replace('/shop')">
             <div class="msite-item-logo">
                 <img src="./img/f4448b3d7c4eb64066ec375d32b7epng.png">
             </div>
