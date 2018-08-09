@@ -30,7 +30,7 @@ yarn-error.log*
 #   1. ssh-keygen -t rsa -C "test@mail.com" ---- 创建SSH Key (在用户文档 id_rsa是私钥 id_rsa.pub是公钥)
 #   2. 在 GitHub 设置中添加 SSH Keys 为 id_rsa.pub 中的内容
 #   3. 克隆远程库 创建时勾选 README
-#   4. git clone [Clone or download] ---- 克隆远程项目 (shh协议速度更快)
+#   4. git clone [Clone or download] ---- 克隆远程项目
 
 # 分支操作
 # 1. git checkout -b test ---- 创建test分支 (-b 并切换到该分支)
@@ -55,8 +55,6 @@ yarn-error.log*
 # 20. git tag -d v0.1 ---- 删除标签
 # 21. git push origin --tags ---- 可以推送全部未推送过的本地标签
 # 22. git push origin :refs/tags/<tagname> ---- 可以删除一个远程标签。
-
-
 
 .idea
 .vscode
