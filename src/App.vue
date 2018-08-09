@@ -18,6 +18,7 @@
     @import "https://at.alicdn.com/t/font_762088_459n55zp058.css";
     .app {
         box-sizing: border-box;
+        overflow: auto;
         position: relative;
         width: 414px;
         height: 736px;

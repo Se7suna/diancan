@@ -46,7 +46,7 @@ yarn-error.log*
 # 11. git stash pop ---- 还原暂缓区内容, 并清空暂缓区
 # 12. git branch -D test ---- 强行删除未合并的分支 (-D 大写)
 # 13. git checkout -b dev origin/dev ---- 创建本地dev分支并连接到origin的dev分支
-# 14. git branch --set-upstream-to=origin/dev dev ---- 连接本地dev分支与origin的dev分支
+# 14. git branch --set-upstream-to master origin/master ---- 连接本地dev分支与origin的dev分支
 # 15. git pull ---- 抓取origin上的最新提交
 # 16. git tag v1.0 ---- 给当前 commit 添加标签(用-a指定标签名 -m指定说明文字)
 # 17. git tag ---- 查看标签

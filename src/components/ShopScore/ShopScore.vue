@@ -36,7 +36,7 @@
                 <span>只看有内容的评价</span>
             </div>
             <ul class="shop_score_text">
-                <li class="shop_text_item clearfix">
+                <li class="shop_text_item">
                     <div class="shop_item_logo"></div>
                     <div class="shop_item_main">
                         <p class="top">匿名用户</p>
@@ -159,6 +159,7 @@
         }
     }
     .shop_text_item {
+        overflow: hidden;
         padding-top: 18px;
         padding-bottom: 18px;
         padding-left: 12px;
