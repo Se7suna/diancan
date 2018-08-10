@@ -31,9 +31,10 @@
         <router-view></router-view>
     </div>
 </template>
-<script>
-</script>
 <style lang="less">
+    .shop {
+        height: 660px;
+    }
     .shop_top {
         height: 110px;
         background-color: #c4bccc;
@@ -78,18 +79,21 @@
         }
     }
     .shop_title_sales {
+        display: flex;
         width: 330px;
         margin: 16px auto 0;
         .left {
+            align-items: center;
             display: inline-block;
             color: #fff;
             padding: 3px 5px;
+            border-radius: 2px;
             background-color: #f07373
         }
         .mid {
-            display: inline-block;
-            width: 222px;
-            vertical-align: middle;
+            align-items: center;
+            line-height: 18px;
+            width: 212px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -97,7 +101,8 @@
             margin-left: 8px;
         }
         .right {
-            vertical-align: middle;
+            align-items: center;
+            float: right;
             color: #a2a2a0;
             i {
                 margin-left: 6px;

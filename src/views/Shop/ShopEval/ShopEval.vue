@@ -112,7 +112,8 @@
                 font-size: 12px;
                 color: #fff;
                 padding: 2px 4px;
-                margin-left: 8px
+                margin-left: 8px;
+                border-radius: 2px;
             }
             .right {
                 vertical-align: middle;
@@ -140,7 +141,7 @@
             position: relative;
             float: left;
             margin-top: 16px;
-            margin-right: 8px;
+            margin-right: 10px;
             img {
                 width: 86px;
                 height: 86px;

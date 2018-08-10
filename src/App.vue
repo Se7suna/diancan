@@ -2,23 +2,37 @@
     <div class="app">
         <router-view class="view"/>
         <FooterGuide v-show="$route.meta.showFooter"/>
+        <ShopCar v-show="$route.meta.showShopCar"/>
     </div>
 </template>
 <script>
     import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+    import ShopCar from './components/ShopCar/ShopCar.vue'
     export default {
         components: {
-            FooterGuide
+            FooterGuide,
+            ShopCar
         }
     }
 </script>
 <style lang="less">
     @import '../static/css/reset.css';
     @import '../static/css/swiper.css';
-    @import "https://at.alicdn.com/t/font_762088_459n55zp058.css";
+    @import "https://at.alicdn.com/t/font_762088_t7werycd1y.css";
+    .clearfix {
+        *zoom: 1;
+        &:before,
+        &:after {
+            content: "";
+            display: table;
+            line-height: 0;
+        }
+        &:after {
+            clear: both;
+        }
+    }
     .app {
         box-sizing: border-box;
-        overflow: auto;
         position: relative;
         width: 414px;
         height: 736px;

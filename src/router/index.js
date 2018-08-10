@@ -8,9 +8,9 @@ import Login from '../views/Login/Login.vue'
 import LogPhone from '../components/LogPhone/LogPhone.vue'
 import LogPwd from '../components/LogPwd/LogPwd.vue'
 import Shop from '../views/Shop/Shop.vue'
-import ShopEval from '../components/ShopEval/ShopEval.vue'
-import ShopChoose from '../components/ShopChoose/ShopChoose.vue'
-import ShopScore from '../components/ShopScore/ShopScore.vue'
+import ShopEval from '../views/Shop/ShopEval/ShopEval.vue'
+import ShopChoose from '../views/Shop/ShopChoose/ShopChoose.vue'
+import ShopScore from '../views/Shop/ShopScore/ShopScore.vue'
 Vue.use(VueRouter)
 export default new VueRouter({
     routes: [
@@ -72,7 +72,10 @@ export default new VueRouter({
                 },
                 {
                     path: 'choose',
-                    component: ShopChoose
+                    component: ShopChoose,
+                    meta: {
+                        showShopCar: true
+                    }
                 },
                 {
                     path: 'score',

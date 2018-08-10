@@ -108,18 +108,6 @@
     }
 </script>
 <style lang="less">
-    .clearfix {
-        *zoom: 1;
-        &:before,
-        &:after {
-            content: "";
-            display: table;
-            line-height: 0;
-        }
-        &:after {
-            clear: both;
-        }
-    }
     .ad-item() {
         position: relative;
         width: 166px;

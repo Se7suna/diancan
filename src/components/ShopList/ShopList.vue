@@ -48,7 +48,55 @@
                 </div>
             </div>
         </li>
-                <li class="msite-shop-item">
+        <li class="msite-shop-item" @click="$router.replace('/shop')">
+            <div class="msite-item-logo">
+                <img src="./img/f4448b3d7c4eb64066ec375d32b7epng.png">
+            </div>
+            <div class="msite-item-info">
+                <h4 class="msite-info-name">
+                    <span class="left">品牌</span>
+                    万州特色牛肉面
+                    <span class="right">票</span>
+                </h4>
+                <div class="msite-info-sale">
+                    <span class="star">
+                        <i class="iconfont icon-xing"></i>
+                        <i class="iconfont icon-xing"></i>
+                        <i class="iconfont icon-xing"></i>
+                        <i class="iconfont icon-xing"></i>
+                        <i class="iconfont icon-xing"></i>
+                    </span>
+                    <span class="num">4.6</span>
+                    <span class="mon">月售 1503单</span>
+                </div>
+                <div class="msite-info-send">
+                    <span class="left">
+                        <span>￥0起送</span>
+                        <span class="bor"></span>
+                        <span>配送费￥2.5</span>
+                    </span>
+                    <span class="right">
+                        <span>718m</span>
+                        <span class="bor"></span>
+                        <span>55分钟</span>
+                    </span>
+                </div>
+                <div class="msite-info-pref">
+                    <div class="new">
+                        <span class="left">
+                            <span class="shou">首</span>
+                            <span class="xin">新用户下单立减17元</span>
+                        </span>
+                        <span class="right">11个活动<i class="iconfont icon-sort-small-copy-copy"></i></span>
+                    </div>
+                    <div class="less">
+                        <span class="jian">减</span>
+                        <span class="man">满30减6，满60减8，满100减10</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="msite-shop-item" @click="$router.replace('/shop')">
             <div class="msite-item-logo">
                 <img src="./img/f4448b3d7c4eb64066ec375d32b7epng.png">
             </div>

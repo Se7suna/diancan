@@ -127,6 +127,7 @@
             margin-top: 8px;
             margin-right: 8px;
             padding: 8px 10px;
+            border-radius: 2px;
         }
         .all {
             color: #fff;
