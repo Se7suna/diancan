@@ -32,9 +32,6 @@
     </div>
 </template>
 <style lang="less">
-    .shop {
-        height: 660px;
-    }
     .shop_top {
         height: 110px;
         background-color: #c4bccc;

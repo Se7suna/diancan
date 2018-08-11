@@ -32,14 +32,16 @@
         }
     }
     .app {
+        display: flex;
+        flex-direction: column;
         box-sizing: border-box;
-        position: relative;
         width: 414px;
         height: 736px;
         border: 1px solid #3c3c3d;
         margin: 0 auto
     }
     .view {
+        flex: 1;
         overflow: auto;
         width: 100%;
     }
