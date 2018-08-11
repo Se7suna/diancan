@@ -8,7 +8,7 @@ yarn-error.log*
 # 本地仓库
 # 1. git init ---- 创建仓库
 # 2. git add * ---- 添加到暂缓区
-# 3. git commit -m "init gshop" ---- 提交到分支 (-m "提交说明")
+# 3. git commit -m "test" ---- 提交到分支 (-m "提交说明")
 #     本地操作
 #     1. git status ---- 查看当前库状态
 #     2. git diff test.txt ---- 查看文件修改内容 

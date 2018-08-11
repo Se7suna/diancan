@@ -62,13 +62,13 @@
     }
 }
 .shop_choose_itme {
+    display: flex;
     overflow: hidden;
     .right {
         overflow: auto;
     }
 }
 .shop_itme_left {
-    float: left;
     width: 86px;
     background-color: #f8f8f8;
     li {
@@ -89,9 +89,9 @@
     }
 }
 .shop_itme_right {
-    width: 300px;
-    float: left;
+    flex: 1;
     padding: 6px 12px;
+    padding-right: 4px;
 }
 .shop_right_dt {
     .left {
