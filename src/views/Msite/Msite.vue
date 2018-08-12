@@ -56,7 +56,7 @@
 <script>
     import Swiper from 'swiper'
     import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
-    import ShopList from '../../components/ShopList/ShopList.vue'
+    import ShopList from './ShopList/ShopList.vue'
     export default {
         mounted () {
             // 切换页面时 需要重新创建 swiper

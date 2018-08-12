@@ -20,7 +20,7 @@
     </form>
 </template>
 <script>
-    import {reqPwdImg} from '../../api'
+    import {reqPwdImg} from '../../../api'
     export default {
         mounted () {
             reqPwdImg().then(result => {

@@ -5,7 +5,7 @@
                 <div class="shop_left_num">4.6</div>
                 <div class="shop_left_star">
                     <p class="up">商家评分</p>
-                    <p class="down">★★★★★</p>
+                    <Stars class="star" :num="4.6"/>
                 </div>
             </div>
             <div class="shop_top_right">
@@ -41,11 +41,7 @@
                     <div class="shop_item_main">
                         <p class="top">匿名用户</p>
                         <p class="mid">
-                            <span class="check">★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
+                            <Stars :num="1"/>
                             <a href="#">吐槽</a>
                         </p>
                         <p class="bot">服务非常差,拒绝再次使用</p>
@@ -58,6 +54,14 @@
         </div>
     </div>
 </template>
+<script>
+    import Stars from '../../../components/Stars/Stars.vue'
+    export default {
+        components: {
+            Stars
+        }
+    }
+</script>
 <style lang="less">
     .shop_score {
         background-color: #f5f5f5
@@ -71,25 +75,23 @@
     }
     .shop_top_left {
         display: flex;
-        height: 32px;
+        align-items: center;
+        overflow: hidden;
         align-self: center;
     }
     .shop_left_num {
         font-size: 30px;
         color: #ff6000;
-        align-self: center;
+        margin-top: -6px;
     }
     .shop_left_star {
-        align-self: center;
         margin-left: 20px;
         .up {
             font-size: 12px;
             color: #767676
         }
-        .down {
-            font-size: 12px;
-            color: #ffda00;
-            margin-top: 8px
+        .star {
+            margin-top: 2px
         }
     }
     .shop_top_right {
@@ -176,6 +178,8 @@
         margin-right: 12px
     }
     .shop_item_main {
+        display: flex;
+        flex-flow: column;
         float: left;
         .bot,
         .top {
@@ -183,17 +187,12 @@
             color: #333
         }
         .mid {
+            display: flex;
+            align-items: center;
+            margin: 4px 0 6px;
             a {
-                color: #8ea1bd
-            }
-            span {
-                display: inline-block;
-                font-size: 12px;
-                color: #eee;
-                margin: 10px 0;
-            }
-            .check {
-                color: #ffdb00
+                color: #8ea1bd;
+                margin-left: 4px;
             }
         }
     }
