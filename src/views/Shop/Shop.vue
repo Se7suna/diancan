@@ -90,7 +90,7 @@
         .mid {
             align-items: center;
             line-height: 18px;
-            width: 212px;
+            max-width: 210px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -102,7 +102,7 @@
             float: right;
             color: #a2a2a0;
             i {
-                margin-left: 6px;
+                margin-left: 2px;
             }
         }
     }

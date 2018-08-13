@@ -47,16 +47,14 @@
             </div>
             <ShopList/>
         </div>
-        <div class="wait" v-else>
-            <img src="../../../static/img/5-121204193Q8.gif">
-            <p>拼命加载中</p>
-        </div>
+        <Wait v-else/>
     </div>
 </template>
 <script>
     import Swiper from 'swiper'
     import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
     import ShopList from './ShopList/ShopList.vue'
+    import Wait from '../../components/Wait/Wait.vue'
     export default {
         mounted () {
             // 切换页面时 需要重新创建 swiper
@@ -70,7 +68,8 @@
         },
         components: {
             HeaderTop,
-            ShopList
+            ShopList,
+            Wait
         },
         computed: {
             foodTypes () {
@@ -138,10 +137,6 @@
     .swiper-container {
         width: 100%;
         height: 194px;
-    }
-    .wait {
-        text-align: center;
-        margin-top: 50%
     }
     .msite {
         height: 678px;

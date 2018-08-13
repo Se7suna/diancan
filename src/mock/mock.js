@@ -59,8 +59,9 @@ Mock.mock('/foodtype', [
             'title': Random.cword(2, 3)
         }
 ])
-Mock.mock('/shops', {
-})
+Mock.mock('/shops', [{
+}]
+)
 // 模拟验证码
 Mock.mock('/getPwdImg', function () {
     return Mock.mock({
