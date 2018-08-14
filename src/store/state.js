@@ -5,5 +5,19 @@ export default {
     // 食品分类
     foodType: [],
     // 商家
-    shops: []
+    shops: [],
+    showShop: {
+        id: '',
+        logo: '',
+        name: '',
+        info: {
+            top: {
+                left: '',
+                right: ''
+            },
+            sale: '',
+            cost: '',
+            ad: ''
+        }
+    }
 }

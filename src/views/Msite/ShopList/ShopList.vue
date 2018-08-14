@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li class="msite-shop-item" v-for="(item, index) of shopSort" :key="index" @click="$router.push('/shop/')">
+        <li class="msite-shop-item" v-for="item  of shopSort" :key="item.id" @click="turn(item.id)">
             <div class="msite-item-logo">
                 <img :src="item.logo">
             </div>
@@ -56,6 +56,16 @@
         computed: {
             shopSort () {
                 return this.$store.state.shops
+            }
+        },
+        methods: {
+            turn (id) {
+                for (let i of this.$store.state.shops) {
+                    if (i.id === id) {
+                        this.$store.state.showShop = i
+                    }
+                }
+                this.$router.push('/shop/' + id)
             }
         }
     }

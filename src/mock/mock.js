@@ -2,7 +2,7 @@ import Mock from 'mockjs'
 const Random = Mock.Random
 const num = Random.integer(5, 10)
 let shopLists = [{
-    id: 123456,
+    id: 0,
     logo: '../../static/img/f4448b3d7c4eb64066ec375d32b7epng.png',
     name: '万州特色牛肉面',
     info: {
@@ -29,7 +29,7 @@ let shopLists = [{
 }]
 for (let i = 0; i < num; i++) {
     let obj = {
-        id: Random.integer(100000, 999999),
+        id: i + 1,
         logo: Random.dataImage('130x130', 'logo!'),
         name: Random.ctitle(2, 4) + '外卖',
         info: {

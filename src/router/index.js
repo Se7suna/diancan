@@ -62,8 +62,8 @@ export default new VueRouter({
             ]
         },
         {
-            path: '/shop',
-            redirect: '/shop/choose',
+            path: '/shop/:id',
+            redirect: '/shop/:id/choose',
             component: Shop,
             children: [
                 {

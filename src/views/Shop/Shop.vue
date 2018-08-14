@@ -3,23 +3,23 @@
         <div class="shop_top">
             <i class="iconfont icon-fanhui"  @click="$router.push('/msite')"></i>
             <div class="shop_top_log">
-                <img src="./img/ia_10020.png">
+                <img :src="this.$store.state.showShop.logo">
             </div>
         </div>
         <div class="shop_title">
-            <h4 class="shop_title_name">showShop.name</h4>
+            <h4 class="shop_title_name">{{this.$store.state.showShop.name}}</h4>
             <div class="shop_title_small">
-                <span class="left">评价</span>
-                <span class="mid">月售单</span>
-                <span class="right">蜂鸟快送约33分钟</span>
+                <span class="left">评价{{this.$store.state.showShop.info.sale.score}}</span>
+                <span class="mid">月售{{this.$store.state.showShop.info.sale.num}}单</span>
+                <span class="right">蜂鸟快送约{{this.$store.state.showShop.info.cost.time}}分钟</span>
             </div>
             <div class="shop_title_sales">
                 <div class="left">
                     <span class="title">满减</span>
-                    <span class="main">满10减11, 满20减21, 满30减31, 满50减51</span>
+                    <span class="main">{{this.$store.state.showShop.info.ad.jian}}</span>
                 </div>
                 <div class="right">
-                    <span>78个优惠</span>
+                    <span>{{this.$store.state.showShop.info.ad.orther.length + 2}}个优惠</span>
                     <i class="iconfont icon-sort-small-copy-copy"></i>
                 </div>
             </div>
@@ -28,9 +28,9 @@
                 <span class="right">新店开业请多多支持, 不足的地方多多包含. 谢谢!</span>
             </div>
             <div class="shop_title_link">
-                <div class="left" @click="$router.replace('/shop/choose')" :class="{on: $route.path === '/shop/choose'}">点餐</div>
-                <div class="mid" @click="$router.replace('/shop/score')" :class="{on: $route.path === '/shop/score'}">评价</div>
-                <div class="right" @click="$router.replace('/shop/eval')" :class="{on: $route.path === '/shop/eval'}">商家</div>
+                <div class="left" @click="$router.replace('/shop/' + $route.params.id + '/choose')" :class="{on: $route.path === '/shop/choose'}">点餐</div>
+                <div class="mid" @click="$router.replace('/shop/' + $route.params.id + '/score')" :class="{on: $route.path === '/shop/score'}">评价</div>
+                <div class="right" @click="$router.replace('/shop/' + $route.params.id + '/eval')" :class="{on: $route.path === '/shop/eval'}">商家</div>
             </div>
         </div>
         <router-view></router-view>
@@ -38,6 +38,18 @@
 </template>
 <script>
     export default {
+        mounted () {
+            if (!this.$store.state.showShop.id) {
+                setTimeout(() => {
+                    let id = +this.$route.params.id
+                    for (let i of this.$store.state.shops) {
+                        if (i.id === id) {
+                            this.$store.state.showShop = i
+                        }
+                    }
+                }, 1000)
+            }
+        }
     }
 </script>
 <style lang="less">
