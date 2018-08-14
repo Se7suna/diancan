@@ -1,22 +1,27 @@
 <template>
     <div class="shop">
         <div class="shop_top">
-            <i class="iconfont icon-fanhui"  @click="$router.replace('/msite')"></i>
+            <i class="iconfont icon-fanhui"  @click="$router.push('/msite')"></i>
             <div class="shop_top_log">
                 <img src="./img/ia_10020.png">
             </div>
         </div>
         <div class="shop_title">
-            <h4 class="shop_title_name">汉莱克炸鸡汉堡</h4>
+            <h4 class="shop_title_name">showShop.name</h4>
             <div class="shop_title_small">
                 <span class="left">评价</span>
-                <span class="mid">月售1211单</span>
+                <span class="mid">月售单</span>
                 <span class="right">蜂鸟快送约33分钟</span>
             </div>
             <div class="shop_title_sales">
-                <span class="left">满减</span>
-                <span class="mid">满10减11, 满20减21, 满30减31, 满50减51</span>
-                <span class="right">78个优惠<i class="iconfont icon-sort-small-copy-copy"></i></span>
+                <div class="left">
+                    <span class="title">满减</span>
+                    <span class="main">满10减11, 满20减21, 满30减31, 满50减51</span>
+                </div>
+                <div class="right">
+                    <span>78个优惠</span>
+                    <i class="iconfont icon-sort-small-copy-copy"></i>
+                </div>
             </div>
             <div class="shop_title_ad">
                 <span class="left">公告:</span>
@@ -31,6 +36,10 @@
         <router-view></router-view>
     </div>
 </template>
+<script>
+    export default {
+    }
+</script>
 <style lang="less">
     .shop_top {
         height: 110px;
@@ -60,47 +69,55 @@
         border-bottom: 1px solid #ebebeb
     }
     .shop_title_name {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 800;
         color: #333;
         margin-top: 38px;
         text-align: center;
     }
     .shop_title_small {
-        font-size: 12px;
         color: #767676;
         text-align: center;
         margin-top: 10px;
+        .left {
+            font-size: 12px;
+        }
         .mid {
+            font-size: 12px;
             margin: 0 12px;
+        }
+        .right {
+            font-size: 12px;
         }
     }
     .shop_title_sales {
         display: flex;
+        align-items: center;
         width: 330px;
         margin: 16px auto 0;
         .left {
-            align-items: center;
-            display: inline-block;
-            color: #fff;
-            padding: 3px 5px;
-            border-radius: 2px;
-            background-color: #f07373
-        }
-        .mid {
-            align-items: center;
-            line-height: 18px;
-            max-width: 210px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            color: #4d4d4d;
-            margin-left: 8px;
+            .title {
+                display: inline-block;
+                color: #fff;
+                padding: 3px 5px;
+                border-radius: 2px;
+                background-color: #f07373
+            }
+            .main {
+                line-height: 18px;
+                max-width: 210px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: #4d4d4d;
+                margin: 0 8px;
+            }
         }
         .right {
-            align-items: center;
-            float: right;
             color: #a2a2a0;
+            span {
+                line-height: 18px;
+            }
             i {
                 margin-left: 2px;
             }

@@ -1,8 +1,8 @@
 <template>
     <div class="stars">
-        <img src="./img/full.png" v-for="index of fullStar" :key="index">
-        <img src="./img/half.png" v-for="index of halfStar" :key="index">
-        <img src="./img/no.png" v-for="index of noStar" :key="index">
+        <img src="./img/full.png" v-for="index of fullStar" :key="index + 'full'">
+        <img src="./img/half.png" v-for="index of halfStar" :key="index + 'half'">
+        <img src="./img/no.png" v-for="index of noStar" :key="index + 'no'">
     </div>
 </template>
 <script>

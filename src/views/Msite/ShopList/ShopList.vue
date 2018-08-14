@@ -1,43 +1,46 @@
 <template>
     <ul>
-        <li class="msite-shop-item" @click="$router.replace('/shop')">
+        <li class="msite-shop-item" v-for="(item, index) of shopSort" :key="index" @click="$router.push('/shop/')">
             <div class="msite-item-logo">
-                <img src="./img/f4448b3d7c4eb64066ec375d32b7epng.png">
+                <img :src="item.logo">
             </div>
             <div class="msite-item-info">
                 <h4 class="msite-info-name">
-                    <span class="left">品牌</span>
-                    万州特色牛肉面
-                    <span class="right">票</span>
+                    <span class="left">{{item.info.top.left}}</span>
+                    {{item.name}}
+                    <span class="right">{{item.info.top.right}}</span>
                 </h4>
                 <div class="msite-info-sale">
-                    <Stars class="star" :num="4"/>
-                    <span class="num">4.6</span>
-                    <span class="mon">月售 1503单</span>
+                    <Stars class="star" :num="item.info.sale.score"/>
+                    <span class="num">{{item.info.sale.score}}</span>
+                    <span class="mon">月售{{item.info.sale.num}}单</span>
                 </div>
                 <div class="msite-info-send">
                     <span class="left">
-                        <span>￥0起送</span>
+                        <span>￥{{item.info.cost.start}}起送</span>
                         <span class="bor"></span>
-                        <span>配送费￥2.5</span>
+                        <span>配送费￥{{item.info.cost.money}}</span>
                     </span>
                     <span class="right">
-                        <span>718m</span>
+                        <span>{{item.info.cost.far}}m</span>
                         <span class="bor"></span>
-                        <span>55分钟</span>
+                        <span>{{item.info.cost.time}}分钟</span>
                     </span>
                 </div>
                 <div class="msite-info-pref">
                     <div class="new">
                         <span class="left">
                             <span class="shou">首</span>
-                            <span class="xin">新用户下单立减17元</span>
+                            <span class="xin">{{item.info.ad.shou}}</span>
                         </span>
-                        <span class="right">11个活动<i class="iconfont icon-sort-small-copy-copy"></i></span>
+                        <span class="right">
+                            {{item.info.ad.orther.length + 2}}个活动
+                            <i class="iconfont icon-sort-small-copy-copy"></i>
+                        </span>
                     </div>
                     <div class="less">
                         <span class="jian">减</span>
-                        <span class="man">满30减6，满60减8，满100减10</span>
+                        <span class="man">{{item.info.ad.jian}}</span>
                     </div>
                 </div>
             </div>
@@ -49,6 +52,11 @@
     export default {
         components: {
             Stars
+        },
+        computed: {
+            shopSort () {
+                return this.$store.state.shops
+            }
         }
     }
 </script>
@@ -126,7 +134,8 @@
         }
         .num,
         .mon {
-            line-height: 22px
+            line-height: 22px;
+            margin-right: 10px;
         }
     }
     .msite-info-send {

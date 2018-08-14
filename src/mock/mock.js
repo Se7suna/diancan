@@ -1,5 +1,61 @@
 import Mock from 'mockjs'
 const Random = Mock.Random
+const num = Random.integer(5, 10)
+let shopLists = [{
+    id: 123456,
+    logo: '../../static/img/f4448b3d7c4eb64066ec375d32b7epng.png',
+    name: '万州特色牛肉面',
+    info: {
+        top: {
+            left: '品牌',
+            right: '票'
+        },
+        sale: {
+            score: 4.6,
+            num: 1503
+        },
+        cost: {
+            start: 0,
+            money: 2.5,
+            far: 718,
+            time: 55
+        },
+        ad: {
+            shou: '新用户下单立减17元',
+            jian: '满30减6，满60减8，满100减10',
+            orther: []
+        }
+    }
+}]
+for (let i = 0; i < num; i++) {
+    let obj = {
+        id: Random.integer(100000, 999999),
+        logo: Random.dataImage('130x130', 'logo!'),
+        name: Random.ctitle(2, 4) + '外卖',
+        info: {
+            top: {
+                left: '品牌',
+                right: Random.cword()
+            },
+            sale: {
+                score: Random.float(0, 4, 1, 1),
+                num: Random.integer(0, 9999)
+            },
+            cost: {
+                start: Random.integer(0, 50),
+                money: Random.float(0, 10, 0, 1),
+                far: Random.integer(0, 999),
+                time: Random.integer(0, 99)
+            },
+            ad: {
+                shou: '新用户下单立减' + Random.integer(0, 88) + '元',
+                jian: `满${Random.integer(0, 99)}减${Random.integer(0, 99)}，满${Random.integer(0, 99)}减${Random.integer(0, 99)}`,
+                orther: []
+            }
+        }
+    }
+    shopLists.push(obj)
+}
 Mock.mock('/address', Random.province() + Random.county())
 Mock.mock('/foodtype', [
         {
@@ -59,8 +115,7 @@ Mock.mock('/foodtype', [
             'title': Random.cword(2, 3)
         }
 ])
-Mock.mock('/shops', [{
-}]
+Mock.mock('/shops', shopLists
 )
 // 模拟验证码
 Mock.mock('/getPwdImg', function () {

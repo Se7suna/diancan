@@ -19,6 +19,7 @@ new Vue({
         // 异步获取首页数据
         this.$store.dispatch('getAddress')
         this.$store.dispatch('getFoodType')
+        this.$store.dispatch('getShops')
     },
     router,
     store

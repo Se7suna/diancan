@@ -3,7 +3,7 @@
         <HeaderTop :title="'我的'">
             <i slot="left" class="iconfont icon-fanhui header-left" @click="$router.back()"></i>
         </HeaderTop>
-        <div class="profile_login" @click="$router.replace('/login')">
+        <div class="profile_login" @click="$router.push('/login')">
             <div class="profile_login_left">
                 <div class="profile_left_log"></div>
                 <div class="profile_left_btn">

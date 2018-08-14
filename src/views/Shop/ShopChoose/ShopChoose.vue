@@ -346,7 +346,6 @@
                 }
                 tops.push(99999)
                 this.tops = tops
-                console.log(tops)
             }, 1000)
         }
     }
