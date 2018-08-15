@@ -1,61 +1,141 @@
 import Mock from 'mockjs'
 const Random = Mock.Random
-const num = Random.integer(5, 10)
-let shopLists = [{
-    id: 0,
-    logo: '../../static/img/f4448b3d7c4eb64066ec375d32b7epng.png',
-    name: '万州特色牛肉面',
-    info: {
-        top: {
-            left: '品牌',
-            right: '票'
-        },
-        sale: {
-            score: 4.6,
-            num: 1503
-        },
-        cost: {
-            start: 0,
-            money: 2.5,
-            far: 718,
-            time: 55
-        },
-        ad: {
-            shou: '新用户下单立减17元',
-            jian: '满30减6，满60减8，满100减10',
-            orther: []
+function createSends () {
+    let sends = [
+        {
+            name: '玉米如意棒 (2根)',
+            img: '../../static/img/c6f855a225c875801d2c1c8318a05jpeg.jpeg',
+            num: 261,
+            good: '100',
+            money: 3.9
         }
+    ]
+    for (let i = 0; i < 4; i++) {
+        let obj = {
+            name: Random.ctitle(),
+            img: Random.dataImage('140x140', 'img!'),
+            num: Random.integer(0, 9999),
+            good: Random.integer(0, 100),
+            money: Random.integer(0, 100)
+        }
+        sends.push(obj)
     }
-}]
-for (let i = 0; i < num; i++) {
-    let obj = {
-        id: i + 1,
-        logo: Random.dataImage('130x130', 'logo!'),
-        name: Random.ctitle(2, 4) + '外卖',
+    return sends
+}
+function createShops () {
+    const num = Random.integer(5, 10)
+    let shops = [{
+        id: 0,
+        logo: '../../static/img/f4448b3d7c4eb64066ec375d32b7epng.png',
+        name: '万州特色牛肉面',
         info: {
             top: {
                 left: '品牌',
-                right: Random.cword()
+                right: '票'
             },
             sale: {
-                score: Random.float(0, 4, 1, 1),
-                num: Random.integer(0, 9999)
+                score: 4.6,
+                num: 1503
             },
             cost: {
-                start: Random.integer(0, 50),
-                money: Random.float(0, 10, 0, 1),
-                far: Random.integer(0, 999),
-                time: Random.integer(0, 99)
+                start: 0,
+                money: 2.5,
+                far: 718,
+                time: 55
             },
             ad: {
-                shou: '新用户下单立减' + Random.integer(0, 88) + '元',
-                jian: `满${Random.integer(0, 99)}减${Random.integer(0, 99)}，满${Random.integer(0, 99)}减${Random.integer(0, 99)}`,
-                orther: []
+                shou: '新用户下单立减17元',
+                jian: '满30减6，满60减8，满100减10',
+                gg: '本店新开张 如有照顾不周的地方还请各位谅解 谢谢!',
+                orther: [],
+                send: createSends()
             }
         }
+    }]
+    for (let i = 0; i < num; i++) {
+        let obj = {
+            id: i + 1,
+            logo: Random.dataImage('130x130', 'logo!'),
+            name: Random.ctitle(2, 4) + '外卖',
+            info: {
+                top: {
+                    left: '品牌',
+                    right: Random.cword('保准票')
+                },
+                sale: {
+                    score: Random.float(0, 4, 1, 1),
+                    num: Random.integer(0, 9999)
+                },
+                cost: {
+                    start: Random.integer(0, 50),
+                    money: Random.float(0, 10, 0, 1),
+                    far: Random.integer(0, 999),
+                    time: Random.integer(0, 99)
+                },
+                ad: {
+                    shou: '新用户下单立减' + Random.integer(0, 88) + '元',
+                    jian: `满${Random.integer(0, 99)}减${Random.integer(0, 99)}，满${Random.integer(0, 99)}减${Random.integer(0, 99)}`,
+                    gg: Random.csentence(),
+                    orther: [],
+                    send: createSends()
+                }
+            }
+        }
+        shops.push(obj)
     }
-    shopLists.push(obj)
+    return shops
 }
+function createFood () {
+    const num = Random.integer(5, 10)
+    let food = [
+        {
+            name: '黑椒鸡块 (2块)',
+            img: '../../static/img/c6f855a225c875801d2c1c8318a05jpeg.jpeg',
+            num: 261,
+            good: '100',
+            sale: 3.7,
+            ad: '每单限1份优惠',
+            before: 4.66,
+            now: 2.66
+        }
+    ]
+    for (let i = 0; i < num; i++) {
+        let obj = {
+            name: Random.ctitle(),
+            img: Random.dataImage('140x140', 'img!'),
+            num: Random.integer(0, 9999),
+            good: Random.integer(0, 100),
+            sale: Random.float(0, 9, 1, 1),
+            ad: Random.ctitle(),
+            before: Random.integer(0, 100),
+            now: Random.integer(0, 100)
+        }
+        food.push(obj)
+    }
+    return food
+}
+function createFoods () {
+    const num = Random.integer(5, 10)
+    let foods = [{
+        id: 0,
+        title: '热销',
+        logo: '../../static/img/ia_10125.png',
+        info: '大家喜欢吃,才叫真好吃',
+        foods: createFood()
+    }]
+    for (let i = 0; i < num; i++) {
+        let obj = {
+            id: i + 1,
+            title: Random.cword(2, 4),
+            logo: Random.dataImage('26x26', 'logo!'),
+            info: Random.ctitle(),
+            foods: createFood()
+        }
+        foods.push(obj)
+    }
+    return foods
+}
+
 Mock.mock('/address', Random.province() + Random.county())
 Mock.mock('/foodtype', [
         {
@@ -115,8 +195,8 @@ Mock.mock('/foodtype', [
             'title': Random.cword(2, 3)
         }
 ])
-Mock.mock('/shops', shopLists
-)
+Mock.mock('/shops', createShops())
+Mock.mock('/foods', createFoods())
 // 模拟验证码
 Mock.mock('/getPwdImg', function () {
     return Mock.mock({

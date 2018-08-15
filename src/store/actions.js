@@ -2,12 +2,14 @@
 import {
     RECEIVE_ADDRESS,
     RECEIVE_FOODTYPE,
-    RECEIVE_SHOPS
+    RECEIVE_SHOPS,
+    RECEIVE_FOODS
 } from './mutation-types.js'
 import {
     reqAddress,
     reqFoodType,
-    reqShops
+    reqShops,
+    reqFoods
 } from '../api'
 export default {
     // 异步获取数据
@@ -28,5 +30,11 @@ export default {
         const URL = '/shops'
         const result = await reqShops(URL)
         commit(RECEIVE_SHOPS, result)
+    },
+    getFoods ({commit}) {
+        const URL = '/foods'
+        reqFoods(URL).then(result => {
+            commit(RECEIVE_FOODS, result)
+        })
     }
 }

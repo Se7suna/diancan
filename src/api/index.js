@@ -10,3 +10,4 @@ export const reqFoodType = url => ajax(url)
 export const reqShops = url => ajax(url)
 // 4. 发送 ajax 请求获取验证码
 export const reqPwdImg = () => ajax('/getPwdImg')
+export const reqFoods = url => ajax(url)

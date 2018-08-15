@@ -65,6 +65,7 @@
                         this.$store.state.showShop = i
                     }
                 }
+                this.$store.dispatch('getFoods')
                 this.$router.push('/shop/' + id)
             }
         }

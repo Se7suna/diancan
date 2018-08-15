@@ -6,18 +6,6 @@ export default {
     foodType: [],
     // 商家
     shops: [],
-    showShop: {
-        id: '',
-        logo: '',
-        name: '',
-        info: {
-            top: {
-                left: '',
-                right: ''
-            },
-            sale: '',
-            cost: '',
-            ad: ''
-        }
-    }
+    showShop: {},
+    foods: []
 }

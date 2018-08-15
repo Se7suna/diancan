@@ -25,7 +25,7 @@
             </div>
             <div class="shop_title_ad">
                 <span class="left">公告:</span>
-                <span class="right">新店开业请多多支持, 不足的地方多多包含. 谢谢!</span>
+                <span class="right">{{this.$store.state.showShop.info.ad.gg}}</span>
             </div>
             <div class="shop_title_link">
                 <div class="left" @click="$router.replace('/shop/' + $route.params.id + '/choose')" :class="{on: $route.path === '/shop/choose'}">点餐</div>
@@ -47,6 +47,7 @@
                             this.$store.state.showShop = i
                         }
                     }
+                this.$store.dispatch('getFoods')
                 }, 1000)
             }
         }

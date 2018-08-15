@@ -3,48 +3,12 @@
         <div class="shop_choose_top">
             <p class="title">商家推荐</p>
             <ul class="shop_top_main">
-                <li class="shop_main_item">
-                    <img src="./img/c060f79c5206215e5657bab74fb1djpeg.jpeg">
-                    <p class="name">玉米如意棒 (两根)</p>
-                    <p class="num">月售1 好评率0%</p>
+                <li class="shop_main_item" v-for="(item, index) of this.$store.state.showShop.info.ad.send" :key="index">
+                    <img :src="item.img">
+                    <p class="name">{{item.name}}</p>
+                    <p class="num">月售{{item.num}} 好评率{{item.good}}%</p>
                     <div class="sale">
-                        <span class="left">￥3.9</span>
-                        <i class="iconfont icon-ic_join_dialing_norm right"></i>
-                    </div>
-                </li>
-                <li class="shop_main_item">
-                    <img src="./img/c060f79c5206215e5657bab74fb1djpeg.jpeg">
-                    <p class="name">玉米如意棒 (两根)</p>
-                    <p class="num">月售1 好评率0%</p>
-                    <div class="sale">
-                        <span class="left">￥3.9</span>
-                        <i class="iconfont icon-ic_join_dialing_norm right"></i>
-                    </div>
-                </li>
-                <li class="shop_main_item">
-                    <img src="./img/c060f79c5206215e5657bab74fb1djpeg.jpeg">
-                    <p class="name">玉米如意棒 (两根)</p>
-                    <p class="num">月售1 好评率0%</p>
-                    <div class="sale">
-                        <span class="left">￥3.9</span>
-                        <i class="iconfont icon-ic_join_dialing_norm right"></i>
-                    </div>
-                </li>
-                <li class="shop_main_item">
-                    <img src="./img/c060f79c5206215e5657bab74fb1djpeg.jpeg">
-                    <p class="name">玉米如意棒 (两根)</p>
-                    <p class="num">月售1 好评率0%</p>
-                    <div class="sale">
-                        <span class="left">￥3.9</span>
-                        <i class="iconfont icon-ic_join_dialing_norm right"></i>
-                    </div>
-                </li>
-                <li class="shop_main_item">
-                    <img src="./img/c060f79c5206215e5657bab74fb1djpeg.jpeg">
-                    <p class="name">玉米如意棒 (两根)</p>
-                    <p class="num">月售1 好评率0%</p>
-                    <div class="sale">
-                        <span class="left">￥3.9</span>
+                        <span class="left">￥{{item.money}}</span>
                         <i class="iconfont icon-ic_join_dialing_norm right"></i>
                     </div>
                 </li>
@@ -52,256 +16,38 @@
         </div>
         <div class="shop_choose_itme">
             <ul class="shop_itme_left">
-                <li :class="{on: 0 === index}" @click="turn(0)">
-                    <img src="./img/ia_10125.png">
-                    <span>热销</span>
-                </li>
-                <li :class="{on: 1 === index}" @click="turn(1)">
-                    <img src="./img/ia_10125.png">
-                    <span>火爆</span>
+                <li :class="{on: num === index}" v-for="(item, num) of this.$store.state.foods" :key="item.id" @click="turn(num)">
+                    <img :src="item.logo">
+                    <span>{{item.title}}</span>
                 </li>
             </ul>
             <div class="shop_itme_right" ref="shopDl" @scroll="dlScroll">
-                <dl class="shop_right_dl">
+                <dl class="shop_right_dl" v-for="item of this.$store.state.foods" :key="item.id">
                     <dt class="shop_right_dt">
-                        <span class="left">热销</span>
-                        <span class="right">大家喜欢吃,才叫真好吃</span>
+                        <span class="left">{{item.title}}</span>
+                        <span class="right">{{item.info}}</span>
                     </dt>
-                    <dd class="shop_right_dd">
+                    <dd class="shop_right_dd" v-for="(food, index) of item.foods" :key="index">
                         <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
+                            <img :src="food.img">
                         </div>
                         <div class="shop_dt_info">
                             <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
+                                <h4>{{food.name}}</h4>
                                 <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
+                                    <span class="left">月售{{food.num}}份</span>
+                                    <span class="right">好评率{{food.good}}%</span>
                                 </p>
                                 <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
+                                    <span class="left">{{food.sale}}折</span>
+                                    <span class="right">{{food.ad}}</span>
                                 </p>
                             </div>
                             <div class="shop_dt_money clearfix">
                                 <div>
                                     <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                </dl>
-                <dl class="shop_right_dl">
-                    <dt class="shop_right_dt">
-                        <span class="left">热销2</span>
-                        <span class="right">大家喜欢吃,才叫真好吃</span>
-                    </dt>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (4块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
-                                </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
-                            </div>
-                        </div>
-                    </dd>
-                    <dd class="shop_right_dd">
-                        <div class="log">
-                            <img src="./img/d21f102a9934a8e4b0fa87b46bb02jpeg.jpeg">
-                        </div>
-                        <div class="shop_dt_info">
-                            <div class="top">
-                                <h4>黑椒鸡块 (2块)</h4>
-                                <p class="shop_info_num">
-                                    <span class="left">月售261份</span>
-                                    <span class="right">好评率100%</span>
-                                </p>
-                                <p class="shop_info_sale">
-                                    <span class="left">3.7折</span>
-                                    <span class="right">每单限1份优惠</span>
-                                </p>
-                            </div>
-                            <div class="shop_dt_money clearfix">
-                                <div>
-                                    <span class="left">￥</span>
-                                    <span class="mid">2.66</span>
-                                    <span class="right">4.66</span>
+                                    <span class="mid">{{food.now}}</span>
+                                    <span class="right">{{food.before}}</span>
                                 </div>
                                 <i class="iconfont icon-ic_join_dialing_norm"></i>
                             </div>
@@ -441,7 +187,7 @@
             }
         }
         .on {
-            background-color: pink
+            background-color: #fff
         }
     }
     .shop_itme_right {
