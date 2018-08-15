@@ -30,13 +30,15 @@
         data () {
             return {
                 starOff: true,
-                imgUrl: ''
+                imgUrl: '',
+                regStr: ''
             }
         },
         methods: {
             imgFresh () {
                 reqPwdImg().then(result => {
                     this.imgUrl = result.url
+                    this.regStr = result.reg
                 })
             }
         }
