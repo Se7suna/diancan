@@ -8,7 +8,7 @@
             <label for="pwd">密码&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input v-if="starOff" id="pwd" type="password" maxlength="16">
             <input v-else id="pwd" type="text" maxlength="16">
-            <div class="logpwd_pwd_star" :class="starOff ? '' : 'star_on'" @click="starOff = !starOff">
+            <div class="logpwd_pwd_star" :class="{star_on: !starOff}" @click="starOff = !starOff">
                 <span :class="starOff ? 'star_off' : 'star_on'"></span>
             </div>
         </div>
@@ -95,12 +95,11 @@
         border-radius: 20px;
         span {
             align-self: center;
-            position: relative;
             width: 20px;
             height: 20px;
-            top: 0;
             border: 1px solid #ddd;
-            border-radius: 50%
+            border-radius: 50%;
+            transition: all .3s;
         }
     }
     .star_off {
@@ -110,7 +109,7 @@
         border: 1px solid #2395ff
     }
     span.star_on {
-        left: 30px;
+        transform: translateX(30px);
         background-color: #2395ff;
         border: 1px solid #2395ff
     }

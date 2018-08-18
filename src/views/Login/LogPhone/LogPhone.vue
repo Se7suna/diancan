@@ -43,7 +43,7 @@
         computed: {
             pass () {
                 if (this.flag) {
-                    const exp = /^1[3-9][0-9]{9}$/g
+                    const exp = /^1[0|3-9]\d{9}$/g
                     return !exp.test(this.phoneNum)
                 } else {
                     return true

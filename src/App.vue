@@ -18,7 +18,7 @@
 <style lang="less">
     @import '../static/css/reset.css';
     @import '../static/css/swiper.css';
-    @import "https://at.alicdn.com/t/font_762088_aifq9y5rie4.css";
+    @import "https://at.alicdn.com/t/font_762088_dviw8a1t14v.css";
     .clearfix {
         *zoom: 1;
         &:before,

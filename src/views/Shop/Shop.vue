@@ -1,12 +1,12 @@
 <template>
     <div class="shop">
-        <div class="shop_top">
+        <div class="shop_top" v-if="$store.state.showShop.name">
             <i class="iconfont icon-fanhui"  @click="$router.push('/msite')"></i>
             <div class="shop_top_log">
                 <img :src="this.$store.state.showShop.logo">
             </div>
         </div>
-        <div class="shop_title">
+        <div class="shop_title" v-if="$store.state.showShop.name">
             <h4 class="shop_title_name">{{this.$store.state.showShop.name}}</h4>
             <div class="shop_title_small">
                 <span class="left">评价{{this.$store.state.showShop.info.sale.score}}</span>
@@ -33,11 +33,18 @@
                 <div class="right" @click="$router.replace('/shop/' + $route.params.id + '/eval')" :class="{on: $route.path === '/shop/eval'}">商家</div>
             </div>
         </div>
-        <router-view></router-view>
+        <div v-else>
+            <Wait/>
+        </div>
+        <router-view v-if="$store.state.showShop.name"></router-view>
     </div>
 </template>
 <script>
+    import Wait from '../../components/Wait/Wait.vue'
     export default {
+        components: {
+            Wait
+        },
         mounted () {
             if (!this.$store.state.showShop.id) {
                 setTimeout(() => {

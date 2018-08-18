@@ -9,7 +9,7 @@
                     <p class="num">月售{{item.num}} 好评率{{item.good}}%</p>
                     <div class="sale">
                         <span class="left">￥{{item.money}}</span>
-                        <i class="iconfont icon-ic_join_dialing_norm right"></i>
+                        <CarCtrl/>
                     </div>
                 </li>
             </ul>
@@ -44,12 +44,12 @@
                                 </p>
                             </div>
                             <div class="shop_dt_money clearfix">
-                                <div>
+                                <div class="money">
                                     <span class="left">￥</span>
                                     <span class="mid">{{food.now}}</span>
                                     <span class="right">{{food.before}}</span>
                                 </div>
-                                <i class="iconfont icon-ic_join_dialing_norm"></i>
+                                <CarCtrl/>
                             </div>
                         </div>
                     </dd>
@@ -59,12 +59,16 @@
     </div>
 </template>
 <script>
+    import CarCtrl from '../../../components/CarCtrl/CarCtrl.vue'
     export default {
         data () {
             return {
                 index: 0,
                 tops: []
             }
+        },
+        components: {
+            CarCtrl
         },
         methods: {
            dlScroll () {
@@ -140,17 +144,6 @@
                 float: left;
                 font-size: 16px;
                 color: #ff5339
-            }
-            .right {
-                float: right;
-                width: 20px;
-                height: 20px;
-                line-height: 22px;
-                text-align: center;
-                font-size: 16px;
-                border-radius: 50%;
-                color: #fff;
-                background-color: #2395ff;
             }
         }
         &:first-child {
@@ -252,10 +245,7 @@
         }
     }
     .shop_dt_money {
-        // position: absolute;
-        // bottom: 0;
-        // left: 118px;
-        div {
+        .money {
             float: left;
             .left {
                 font-size: 12px;
@@ -272,17 +262,6 @@
                 text-decoration: line-through;
                 margin-left: 4px;
             }
-        }
-        i {
-            float: right;
-            width: 22px;
-            height: 22px;
-            line-height: 24px;
-            text-align: center;
-            font-size: 20px;
-            color: #fff;
-            background-color: #2395ff;
-            border-radius: 50%;
         }
     }
 </style>
