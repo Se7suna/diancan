@@ -5,8 +5,6 @@ import Search from '../views/Search/Search.vue'
 import Order from '../views/Order/Order.vue'
 import Profile from '../views/Profile/Profile.vue'
 import Login from '../views/Login/Login.vue'
-import LogPhone from '../views/Login/LogPhone/LogPhone.vue'
-import LogPwd from '../views/Login/LogPwd/LogPwd.vue'
 import Shop from '../views/Shop/Shop.vue'
 import ShopEval from '../views/Shop/ShopEval/ShopEval.vue'
 import ShopChoose from '../views/Shop/ShopChoose/ShopChoose.vue'
@@ -48,18 +46,7 @@ export default new VueRouter({
         },
         {
             path: '/login',
-            redirect: '/login/phone',
-            component: Login,
-            children: [
-                {
-                    path: 'phone',
-                    component: LogPhone
-                },
-                {
-                    path: 'pwd',
-                    component: LogPwd
-                }
-            ]
+            component: Login
         },
         {
             path: '/shop/:id',

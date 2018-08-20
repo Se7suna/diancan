@@ -1,39 +1,49 @@
 <template>
-    <div class="shopcar">
+    <div class="shopcar" v-if="$store.state.showShop.name">
         <div class="shopcar_top">
             <span>
-                满10减10元, 满20减30元, 满10减10元, 满20减30元
+                {{$store.state.showShop.info.ad.jian}}
             </span>
         </div>
-        <div class="shopcar_main" v-if="$store.state.showShop.car && $store.state.showShop.car.length">
+        <div class="shopcar_main" v-if="show && car.length">
             <div class="shopcar_main_top">
                 <div class="left">已选商品</div>
                 <div class="right">
                     <i class="iconfont icon-huishouzhan"></i>
-                    <span>清空</span>
+                    <span @click="clearCar">清空</span>
                 </div>
             </div>
             <ul class="shopcar_main_list">
-                <li class="shopcar_main_item" v-for="(item, index) of $store.state.showShop.car" :key="index">
+                <li class="shopcar_main_item" v-for="item of car" :key="item.id">
                     <div class="left">
                         <span class="item">{{item.name}}</span>
-                        <span class="money">￥{{item.money}}</span>
+                        <span class="money">￥{{item.now * item.buy}}</span>
                     </div>
-                    <CarCtrl/>
+                    <CarCtrl :foodId="item.id" :buy="item.buy"/>
                 </li>
             </ul>
         </div>
-        <div class="shopcar_bot clearfix">
-            <div class="left">
-                <i class="iconfont icon-gouwuche1"></i>
-                <span>6</span>
+        <div class="shopcar_bot clearfix" @click="toggleCar()">
+            <div class="left" :class="{haveBgc: car.length}">
+                <i class="iconfont icon-gouwuche1" :class="{haveCor: car.length}"></i>
+                <span>{{car.length}}</span>
             </div>
             <div class="mid">
-                <p class="top">未选购商品</p>
-                <p class="bot">另需配送费4.5元</p>
+                <p class="top">
+                    <span class="new" v-if="moneyNow">
+                        ￥{{moneyNow}}
+                    </span>
+                    <span class="old" v-if="moneyNow">
+                        ￥{{moneyOld}}
+                    </span>
+                    <span v-else>
+                        未选购商品
+                    </span>
+                </p>
+                <p class="bot">另需配送费{{$store.state.showShop.info.cost.money}}元</p>
             </div>
-            <div class="right">
-                <span>￥15起送</span>
+            <div class="right" :class="{full: moneyNow > $store.state.showShop.info.cost.start}" @click.stop="pay()">
+                <span>{{moneyNow > $store.state.showShop.info.cost.start ? '去结算' : `￥${$store.state.showShop.info.cost.start}起送`}}</span>
             </div>
         </div>
     </div>
@@ -41,8 +51,67 @@
 <script>
     import CarCtrl from '../CarCtrl/CarCtrl.vue'
     export default {
+        data () {
+            return {
+                show: false
+            }
+        },
+        computed: {
+            car () {
+                let res = []
+                if (this.$store.state.showShop.food) {
+                    for (let i of this.$store.state.showShop.food) {
+                        for (let food of i.foods) {
+                            if (food.buy > 0) {
+                                res.push(food)
+                            }
+                        }
+                    }
+                }
+                return res
+            },
+            moneyNow () {
+                let res = 0
+                for (let i of this.car) {
+                    res += i.now * i.buy
+                }
+                res = +res.toFixed(2)
+                return res
+            },
+            moneyOld () {
+                let res = 0
+                for (let i of this.car) {
+                    res += i.before * i.buy
+                }
+                res = +res.toFixed(2)
+                return res
+            }
+        },
+        methods: {
+            toggleCar () {
+                if (this.car.length) {
+                    this.show = !this.show
+                }
+            },
+            clearCar () {
+                this.show = false
+                this.$store.dispatch('clearCar')
+            },
+            pay () {
+                if (this.moneyNow > this.$store.state.showShop.info.cost.start) {
+                    console.log('结算页面未完工~')
+                }
+            }
+        },
         components: {
             CarCtrl
+        },
+        watch: {
+            'car': function () {
+                if (this.car.length === 0) {
+                    this.show = false
+                }
+            }
         }
     }
 </script>
@@ -125,29 +194,40 @@
             span {
                 position: absolute;
                 display: block;
-                width: 16px;
-                height: 16px;
-                line-height: 16px;
+                width: 18px;
+                height: 18px;
+                line-height: 18px;
                 text-align: center;
                 color: #fff;
-                right: -8px;
+                right: -6px;
                 top: -8px;
-                font-size: 8px;
+                font-size: 10px;
                 background-color: #ff5415;
                 border-radius: 50%
             }
         }
         .mid {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
             float: left;
+            height: 56px;
             color: #999;
             margin-left: 20px;
             .top {
                 font-size: 14px;
-                margin-top: 14px;
             }
             .bot {
                 font-size: 12px;
                 margin-top: 4px;
+            }
+            .new {
+                color: #fff;
+                font-size: 18px;
+            }
+            .old {
+                font-size: 12px;
+                text-decoration: line-through
             }
         }
         .right {
@@ -157,7 +237,18 @@
             font-weight: 800;
             color: #fff;
             background-color: #535356;
-            padding: 18px 28px;
+            padding: 21px 28px;
+            margin-right: -1px;
+            margin-bottom: -1px;
+        }
+        .full {
+            background-color: #38ca73
+        }
+        .haveBgc {
+            background-color: #3190e8
+        }
+        i.haveCor{
+            color: #fff;
         }
     }
 </style>

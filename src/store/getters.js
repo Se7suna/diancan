@@ -2,6 +2,6 @@
 export default {
     phoneExp (state) {
         const exp = /^1[0|3-9]\d{9}$/g
-        return exp.test(state.user.phone)
+        return exp.test(state.login.phone)
     }
 }

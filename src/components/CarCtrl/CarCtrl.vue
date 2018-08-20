@@ -1,27 +1,19 @@
 <template>
     <div class="carctrl">
-        <i class="iconfont icon-jianhao" v-show="buy" @click="delFood()"></i>
+        <i class="iconfont icon-jianhao" v-show="buy" @click.stop="adFood(false)"></i>
         <span v-show="buy">{{buy}}</span>
-        <i class="iconfont icon-iconfontadd" @click="addFood()"></i>
+        <i class="iconfont icon-iconfontadd" @click.stop="adFood(true)"></i>
     </div>
 </template>
 <script>
     export default {
         props: {
-            food: String,
-            money: Number,
+            foodId: Number,
             buy: Number
         },
         methods: {
-            addFood () {
-                let obj = {
-                    name: this.food,
-                    money: this.money,
-                    buy: this.buy
-                }
-                this.$store.dispatch('car', obj)
-            },
-            delFood () {
+            adFood (isAdd) {
+                this.$store.dispatch('carAd', {isAdd, foodId: this.foodId})
             }
         }
     }

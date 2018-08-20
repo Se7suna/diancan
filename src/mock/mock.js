@@ -16,7 +16,7 @@ function createShops () {
                 num: 1503
             },
             cost: {
-                start: 0,
+                start: 10,
                 money: 2.5,
                 far: 718,
                 time: 55
@@ -27,8 +27,7 @@ function createShops () {
                 gg: '本店新开张 如有照顾不周的地方还请各位谅解 谢谢!',
                 orther: []
             }
-        },
-        car: []
+        }
     }]
     for (let i = 0; i < num; i++) {
         let obj = {
@@ -56,8 +55,7 @@ function createShops () {
                     gg: Random.csentence(),
                     orther: []
                 }
-            },
-            car: []
+            }
         }
         shops.push(obj)
     }
@@ -67,6 +65,7 @@ function createFood () {
     const num = Random.integer(5, 10)
     let food = [
         {
+            id: parseInt(Math.random() * 1000000000000),
             name: '黑椒鸡块 (2块)',
             img: '../../static/img/c6f855a225c875801d2c1c8318a05jpeg.jpeg',
             num: 261,
@@ -81,6 +80,7 @@ function createFood () {
     ]
     for (let i = 0; i < num; i++) {
         let obj = {
+            id: parseInt(Math.random() * 1000000000000),
             name: Random.ctitle(),
             img: Random.dataImage('140x140', 'img!'),
             num: Random.integer(0, 9999),
@@ -99,7 +99,7 @@ function createFood () {
 function createFoods () {
     const num = Random.integer(5, 10)
     let foods = [{
-        id: 0,
+        id: parseInt(Math.random() * 1000000000000),
         title: '热销',
         logo: '../../static/img/ia_10125.png',
         info: '大家喜欢吃,才叫真好吃',
@@ -107,7 +107,7 @@ function createFoods () {
     }]
     for (let i = 0; i < num; i++) {
         let obj = {
-            id: i + 1,
+            id: parseInt(Math.random() * 1000000000000),
             title: Random.cword(2, 4),
             logo: Random.dataImage('26x26', 'logo!'),
             info: Random.ctitle(),
@@ -186,4 +186,11 @@ Mock.mock('/getPwdImg', function () {
             url: Mock.Random.dataImage('70x30', exp),
             reg: exp
     })
+})
+Mock.mock('/user', {
+    id: '',
+    pwd: '',
+    code: '',
+    phone: '',
+    order: []
 })

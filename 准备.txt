@@ -107,3 +107,12 @@ main.js  入口 js
 
 config index.js --- assetsPublicPath: './' --- 解决图片路径问题
 build utils.js --- publicPath: '../../' --- 解决css背景图片问题
+
+坑:
+    对比数字前 先注意数据类型
+    Vue.set 给后添加的数据增加监听
+    v-if 解决解决 undefined 报错
+    watch + this.$nextTick(callback) 解决创建时机问题
+    native 修饰符 解决组件原生事件无效问题
+    重新设置 图片 src 可以刷新图片(在路径后面加一个查询参数)
+    小数计算不精准 res.toFixed(2) 可将结果保留两位小数

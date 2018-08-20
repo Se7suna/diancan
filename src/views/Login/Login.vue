@@ -5,15 +5,15 @@
         </div>
         <div class="login_main">
             <div class="login_main_choose">
-                <router-link to="/login/phone" class="login_choose_phone" @click.native="isPhone = true" :class="{show_blue : isPhone}">
+                <span class="login_choose_phone" @click="isPhone = true" :class="{show_blue : isPhone}">
                     短信登录
-                </router-link>
-                <router-link to="/login/pwd" class="login_choose_pwd" @click.native="isPhone = false" :class="{show_blue : !isPhone}">
+                </span>
+                <span class="login_choose_pwd" @click="isPhone = false" :class="{show_blue : !isPhone}">
                     密码登录
-                </router-link>
+                </span>
             </div>
-            <router-view class="login_main_input">
-            </router-view>
+            <LogPhone v-if="isPhone"/>
+            <LogPwd v-else/>
             <p class="login_main_text">
                 温馨提示：未注册饿了么账号的手机号，登录时将自动注册，且代表您已同意
                 <a href="#">《用户服务协议》</a>
@@ -27,6 +27,8 @@
     </div>
 </template>
 <script>
+    import LogPhone from './LogPhone/LogPhone.vue'
+    import LogPwd from './LogPwd/LogPwd.vue'
     export default {
         data () {
             return {
@@ -37,15 +39,23 @@
             login () {
                 if (this.isPhone) {
                     if (!this.$store.getters.phoneExp) {
-                        alert('手机输出错误 请重新输入!')
-                        // return
+                        console.log('手机号输出错误!')
+                        return
                     }
-                    // 发送ajax请求
+                    if (this.$store.state.login.code.length < 6) {
+                        console.log('验证码输入错误!')
+                        return
+                    }
+                    this.$store.dispatch('getUser')
                 }
             },
             exit () {
                 this.$router.back()
             }
+        },
+        components: {
+            LogPhone,
+            LogPwd
         }
     }
 </script>
@@ -71,7 +81,8 @@
         padding-bottom: 6px;
         margin: 0 20px;
     }
-    .login_main_input {
+    .logpwd,
+    .logphone {
         width: 300px;
         margin: 16px auto 12px;
     }

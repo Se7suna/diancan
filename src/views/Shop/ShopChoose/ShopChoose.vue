@@ -9,7 +9,7 @@
                     <p class="num">月售{{item.num}} 好评率{{item.good}}%</p>
                     <div class="sale">
                         <span class="left">￥{{item.now}}</span>
-                        <CarCtrl/>
+                        <CarCtrl :foodId="item.id" :buy="item.buy"/>
                     </div>
                 </li>
             </ul>
@@ -49,7 +49,7 @@
                                     <span class="mid">{{food.now}}</span>
                                     <span class="right">{{food.before}}</span>
                                 </div>
-                                <CarCtrl/>
+                                <CarCtrl :foodId="food.id" :buy="food.buy"/>
                             </div>
                         </div>
                     </dd>
@@ -93,9 +93,10 @@
         },
         created () {
             for (let i of this.$store.state.shops) {
-                if (i.id === this.$route.params.id) {
+                if (+i.id === +this.$route.params.id) {
                     this.$store.state.showShop = i
                     this.$store.dispatch('getFoods')
+                    return
                 }
             }
         },

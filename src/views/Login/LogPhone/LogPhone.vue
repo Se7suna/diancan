@@ -3,14 +3,14 @@
         <div class="logphone_phone">
             <label>
                 手机号
-                <input id="phone" v-model="$store.state.user.phone" type="tel" maxlength="11">
+                <input id="phone" v-model="$store.state.login.phone" type="tel" maxlength="11">
             </label>
             <button :disabled="pass" @click="phoneMsg()">{{showMsg}}</button>
         </div>
         <div class="logphone_code">
             <label>
                 验证码
-                <input id="phone_code" type="text" v-model="$store.state.user.code" maxlength="6">
+                <input id="phone_code" type="text" v-model="$store.state.login.code" maxlength="6">
             </label>
         </div>
     </form>
@@ -25,7 +25,6 @@
         },
         methods: {
             phoneMsg () {
-                alert('验证码发送成功! 由于没有后台发送验证码,使用 1234 进行登录测试')
                 this.flag = false
                 let time = 30
                 const id = setInterval(() => {

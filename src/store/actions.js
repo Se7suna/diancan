@@ -4,13 +4,16 @@ import {
     RECEIVE_FOODTYPE,
     RECEIVE_SHOPS,
     RECEIVE_FOODS,
-    RECEIVE_CAR
+    RECEIVE_CAR,
+    RECEIVE_CLEARCAR,
+    RECEIVE_GETUSER
 } from './mutation-types.js'
 import {
     reqAddress,
     reqFoodType,
     reqShops,
-    reqFoods
+    reqFoods,
+    reqUser
 } from '../api'
 export default {
     // 异步获取数据
@@ -38,7 +41,15 @@ export default {
             commit(RECEIVE_FOODS, result)
         })
     },
-    car ({commit}) {
-        commit(RECEIVE_CAR)
+    carAd ({commit}, obj) {
+        commit(RECEIVE_CAR, obj)
+    },
+    clearCar ({commit}) {
+        commit(RECEIVE_CLEARCAR)
+    },
+    async getUser ({commit}) {
+        const URL = '/user'
+        let result = await reqUser(URL)
+        commit(RECEIVE_GETUSER, result)
     }
 }

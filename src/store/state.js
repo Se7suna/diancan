@@ -9,7 +9,7 @@ export default {
     // 正在显示的商家
     showShop: {},
     // 登录信息
-    user: {
+    login: {
         id: '',
         pwd: '',
         code: '',
