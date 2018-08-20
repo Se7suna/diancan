@@ -5,10 +5,10 @@
         </div>
         <div class="login_main">
             <div class="login_main_choose">
-                <router-link to="/login/phone" class="login_choose_phone" @click.native="isPhone = true" :class="isPhone ? 'show_blue' : ''">
+                <router-link to="/login/phone" class="login_choose_phone" @click.native="isPhone = true" :class="{show_blue : isPhone}">
                     短信登录
                 </router-link>
-                <router-link to="/login/pwd" class="login_choose_pwd" @click.native="isPhone = false" :class="isPhone ? '' : 'show_blue'">
+                <router-link to="/login/pwd" class="login_choose_pwd" @click.native="isPhone = false" :class="{show_blue : !isPhone}">
                     密码登录
                 </router-link>
             </div>
@@ -19,8 +19,8 @@
                 <a href="#">《用户服务协议》</a>
             </p>
             <div class="login_main_button">
-                <button class="login_main_yes">登录</button>
-                <button class="login_main_no" @click="$router.push('/profile')">取消</button>
+                <button class="login_main_yes" @click="login()">登录</button>
+                <button class="login_main_no" @click="exit()">取消</button>
             </div>
             <a href="#" class="login_main_us">关于我们</a>
         </div>
@@ -31,6 +31,20 @@
         data () {
             return {
                 isPhone: true
+            }
+        },
+        methods: {
+            login () {
+                if (this.isPhone) {
+                    if (!this.$store.getters.phoneExp) {
+                        alert('手机输出错误 请重新输入!')
+                        // return
+                    }
+                    // 发送ajax请求
+                }
+            },
+            exit () {
+                this.$router.back()
             }
         }
     }

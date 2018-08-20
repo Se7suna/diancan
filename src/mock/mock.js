@@ -1,27 +1,5 @@
 import Mock from 'mockjs'
 const Random = Mock.Random
-function createSends () {
-    let sends = [
-        {
-            name: '玉米如意棒 (2根)',
-            img: '../../static/img/c6f855a225c875801d2c1c8318a05jpeg.jpeg',
-            num: 261,
-            good: '100',
-            money: 3.9
-        }
-    ]
-    for (let i = 0; i < 4; i++) {
-        let obj = {
-            name: Random.ctitle(),
-            img: Random.dataImage('140x140', 'img!'),
-            num: Random.integer(0, 9999),
-            good: Random.integer(0, 100),
-            money: Random.integer(0, 100)
-        }
-        sends.push(obj)
-    }
-    return sends
-}
 function createShops () {
     const num = Random.integer(5, 10)
     let shops = [{
@@ -47,10 +25,10 @@ function createShops () {
                 shou: '新用户下单立减17元',
                 jian: '满30减6，满60减8，满100减10',
                 gg: '本店新开张 如有照顾不周的地方还请各位谅解 谢谢!',
-                orther: [],
-                send: createSends()
+                orther: []
             }
-        }
+        },
+        car: []
     }]
     for (let i = 0; i < num; i++) {
         let obj = {
@@ -76,10 +54,10 @@ function createShops () {
                     shou: '新用户下单立减' + Random.integer(0, 88) + '元',
                     jian: `满${Random.integer(0, 99)}减${Random.integer(0, 99)}，满${Random.integer(0, 99)}减${Random.integer(0, 99)}`,
                     gg: Random.csentence(),
-                    orther: [],
-                    send: createSends()
+                    orther: []
                 }
-            }
+            },
+            car: []
         }
         shops.push(obj)
     }
@@ -96,7 +74,9 @@ function createFood () {
             sale: 3.7,
             ad: '每单限1份优惠',
             before: 4.66,
-            now: 2.66
+            now: 2.66,
+            show: true,
+            buy: 0
         }
     ]
     for (let i = 0; i < num; i++) {
@@ -108,7 +88,9 @@ function createFood () {
             sale: Random.float(0, 9, 1, 1),
             ad: Random.ctitle(),
             before: Random.integer(0, 100),
-            now: Random.integer(0, 100)
+            now: Random.integer(0, 100),
+            show: i % 3 === 0,
+            buy: 0
         }
         food.push(obj)
     }
@@ -138,62 +120,62 @@ function createFoods () {
 
 Mock.mock('/address', Random.province() + Random.county())
 Mock.mock('/foodtype', [
-        {
-            'img': './static/img/a867c870b22bc74c87c348b75528djpeg.jpeg',
-            'title': '美食'
-        },
-        {
-            'img': './static/img/76a23eb90dada42528bc41499d6f8jpeg.jpeg',
-            'title': '商超便利'
-        },
-        {
-            'img': './static/img/60ac33f023d9074e13cd78f9b5964jpeg.jpeg',
-            'title': '午餐'
-        },
-        {
-            'img': './static/img/dd7c960f08cdc756b1d3ad54978fdjpeg.jpeg',
-            'title': '果蔬生鲜'
-        },
-        {
-            'img': './static/img/af108e256ebc9f02db599592ae655jpeg.jpeg',
-            'title': '医药健康'
-        },
-        {
-            'img': './static/img/b02bd836411c016935d258b300cfejpeg.jpeg',
-            'title': '大牌5折'
-        },
-        {
-            'img': './static/img/c888acb2c8ba9e0c813f36ec9e90ajpeg.jpeg',
-            'title': '浪漫鲜花'
-        },
-        {
-            'img': './static/img/b7ba9547aa700bd20d0420e1794a8jpeg.jpeg',
-            'title': '麻辣烫'
-        },
-        {
-            'img': './static/img/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg',
-            'title': '地方菜系'
-        },
-        {
-            'img': './static/img/235761e50d391445f021922b71789jpeg.jpeg',
-            'title': '披萨意面'
-        },
-        {
-            'img': Random.image('100x100', '#50B347', '#FFFFFF', 'm'),
-            'title': Random.cword(2, 3)
-        },
-        {
-            'img': Random.image('100x100', '#4A7BF7', '#FFFFFF', 'o'),
-            'title': Random.cword(2, 3)
-        },
-        {
-            'img': Random.image('100x100', '#FF6600', '#FFFFFF', 'c'),
-            'title': Random.cword(2, 3)
-        },
-        {
-            'img': Random.image('100x100', '#894FC4', '#FFFFFF', 'k'),
-            'title': Random.cword(2, 3)
-        }
+    {
+        'img': './static/img/a867c870b22bc74c87c348b75528djpeg.jpeg',
+        'title': '美食'
+    },
+    {
+        'img': './static/img/76a23eb90dada42528bc41499d6f8jpeg.jpeg',
+        'title': '商超便利'
+    },
+    {
+        'img': './static/img/60ac33f023d9074e13cd78f9b5964jpeg.jpeg',
+        'title': '午餐'
+    },
+    {
+        'img': './static/img/dd7c960f08cdc756b1d3ad54978fdjpeg.jpeg',
+        'title': '果蔬生鲜'
+    },
+    {
+        'img': './static/img/af108e256ebc9f02db599592ae655jpeg.jpeg',
+        'title': '医药健康'
+    },
+    {
+        'img': './static/img/b02bd836411c016935d258b300cfejpeg.jpeg',
+        'title': '大牌5折'
+    },
+    {
+        'img': './static/img/c888acb2c8ba9e0c813f36ec9e90ajpeg.jpeg',
+        'title': '浪漫鲜花'
+    },
+    {
+        'img': './static/img/b7ba9547aa700bd20d0420e1794a8jpeg.jpeg',
+        'title': '麻辣烫'
+    },
+    {
+        'img': './static/img/ec21096d528b7cfd23cdd894f01c6jpeg.jpeg',
+        'title': '地方菜系'
+    },
+    {
+        'img': './static/img/235761e50d391445f021922b71789jpeg.jpeg',
+        'title': '披萨意面'
+    },
+    {
+        'img': Random.image('100x100', '#50B347', '#FFFFFF', 'm'),
+        'title': Random.cword(2, 3)
+    },
+    {
+        'img': Random.image('100x100', '#4A7BF7', '#FFFFFF', 'o'),
+        'title': Random.cword(2, 3)
+    },
+    {
+        'img': Random.image('100x100', '#FF6600', '#FFFFFF', 'c'),
+        'title': Random.cword(2, 3)
+    },
+    {
+        'img': Random.image('100x100', '#894FC4', '#FFFFFF', 'k'),
+        'title': Random.cword(2, 3)
+    }
 ])
 Mock.mock('/shops', createShops())
 Mock.mock('/foods', createFoods())

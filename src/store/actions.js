@@ -3,7 +3,8 @@ import {
     RECEIVE_ADDRESS,
     RECEIVE_FOODTYPE,
     RECEIVE_SHOPS,
-    RECEIVE_FOODS
+    RECEIVE_FOODS,
+    RECEIVE_CAR
 } from './mutation-types.js'
 import {
     reqAddress,
@@ -36,5 +37,8 @@ export default {
         reqFoods(URL).then(result => {
             commit(RECEIVE_FOODS, result)
         })
+    },
+    car ({commit}) {
+        commit(RECEIVE_CAR)
     }
 }

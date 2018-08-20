@@ -5,7 +5,7 @@
                 满10减10元, 满20减30元, 满10减10元, 满20减30元
             </span>
         </div>
-        <div class="shopcar_main">
+        <div class="shopcar_main" v-if="$store.state.showShop.car && $store.state.showShop.car.length">
             <div class="shopcar_main_top">
                 <div class="left">已选商品</div>
                 <div class="right">
@@ -14,19 +14,12 @@
                 </div>
             </div>
             <ul class="shopcar_main_list">
-                <li class="shopcar_main_item">
+                <li class="shopcar_main_item" v-for="(item, index) of $store.state.showShop.car" :key="index">
                     <div class="left">
-                        <span class="item">白米饭</span>
-                        <span class="money">￥2</span>
+                        <span class="item">{{item.name}}</span>
+                        <span class="money">￥{{item.money}}</span>
                     </div>
-                    <CarCtrl class="right"/>
-                </li>
-                <li class="shopcar_main_item">
-                    <div class="left">
-                        <span class="item">白米饭</span>
-                        <span class="money">￥2</span>
-                    </div>
-                    <CarCtrl class="right"/>
+                    <CarCtrl/>
                 </li>
             </ul>
         </div>
@@ -55,6 +48,7 @@
 </script>
 <style lang="less">
     .shopcar_top {
+        text-align: center;
         padding: 2px 74px;
         background-color: #fffad8;
         border-top: 1px solid #f9e9a7;

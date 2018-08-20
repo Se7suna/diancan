@@ -1,8 +1,8 @@
 <template>
     <div class="app">
         <router-view class="view"/>
-        <FooterGuide v-show="$route.meta.showFooter"/>
-        <ShopCar v-show="$route.meta.showShopCar"/>
+        <FooterGuide v-if="$route.meta.showFooter"/>
+        <ShopCar v-if="$route.meta.showShopCar"/>
     </div>
 </template>
 <script>
@@ -44,5 +44,8 @@
         flex: 1;
         overflow: auto;
         width: 100%;
+    }
+    .swal2-popup {
+        font-size: 14px;
     }
 </style>

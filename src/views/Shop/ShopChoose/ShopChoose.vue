@@ -1,14 +1,14 @@
 <template>
     <div class="shop_choose">
-        <div class="shop_choose_top">
+        <div class="shop_choose_top" v-if="showShop.food">
             <p class="title">商家推荐</p>
             <ul class="shop_top_main">
-                <li class="shop_main_item" v-for="(item, index) of this.$store.state.showShop.info.ad.send" :key="index">
+                <li class="shop_main_item" v-for="(item, index) of showShop.food[0].foods" v-if="item.show" :key="index">
                     <img :src="item.img">
                     <p class="name">{{item.name}}</p>
                     <p class="num">月售{{item.num}} 好评率{{item.good}}%</p>
                     <div class="sale">
-                        <span class="left">￥{{item.money}}</span>
+                        <span class="left">￥{{item.now}}</span>
                         <CarCtrl/>
                     </div>
                 </li>
@@ -16,13 +16,13 @@
         </div>
         <div class="shop_choose_itme">
             <ul class="shop_itme_left">
-                <li :class="{on: num === index}" v-for="(item, num) of this.$store.state.foods" :key="item.id" @click="turn(num)">
+                <li :class="{on: num === index}" v-for="(item, num) of showShop.food" :key="item.id" @click="turn(num)">
                     <img :src="item.logo">
                     <span>{{item.title}}</span>
                 </li>
             </ul>
             <div class="shop_itme_right" ref="shopDl" @scroll="dlScroll">
-                <dl class="shop_right_dl" v-for="item of this.$store.state.foods" :key="item.id">
+                <dl class="shop_right_dl" v-for="item of showShop.food" :key="item.id">
                     <dt class="shop_right_dt">
                         <span class="left">{{item.title}}</span>
                         <span class="right">{{item.info}}</span>
@@ -67,11 +67,16 @@
                 tops: []
             }
         },
+        computed: {
+            showShop () {
+                return this.$store.state.showShop
+            }
+        },
         components: {
             CarCtrl
         },
         methods: {
-           dlScroll () {
+            dlScroll () {
                 const top = this.$refs.shopDl.scrollTop
                 const tops = this.tops
                 for (let i = 0; i < tops.length; i++) {
@@ -84,6 +89,14 @@
                 this.index = index
                 const top = this.tops[index] - this.tops[0]
                 this.$refs.shopDl.scrollTop = top
+            }
+        },
+        created () {
+            for (let i of this.$store.state.shops) {
+                if (i.id === this.$route.params.id) {
+                    this.$store.state.showShop = i
+                    this.$store.dispatch('getFoods')
+                }
             }
         },
         mounted () {

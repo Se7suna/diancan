@@ -60,12 +60,6 @@
         },
         methods: {
             turn (id) {
-                for (let i of this.$store.state.shops) {
-                    if (i.id === id) {
-                        this.$store.state.showShop = i
-                    }
-                }
-                this.$store.dispatch('getFoods')
                 this.$router.push('/shop/' + id)
             }
         }
