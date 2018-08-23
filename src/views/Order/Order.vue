@@ -3,184 +3,34 @@
         <HeaderTop :title="'订单'">
             <i slot="left" class="iconfont icon-fanhui header-left" @click="$router.back()"></i>
         </HeaderTop>
-        <ul class="order_main">
-            <li class="order_main_item">
+        <ul class="order_main" v-if="$store.state.user.id">
+            <li class="order_main_item" v-for="item of $store.state.user.order" :key="item.time">
                 <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
+                    <img :src="item.img">
                 </div>
                 <div class="order_item_details">
                     <div class="up">
                         <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
+                            <span class="left">{{item.shop}}</span>
                             <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
+                            <span class="right">{{item.state ? "订单已送达" : "正在配送"}}</span>
                         </div>
-                        <p>8小时37分钟前</p>
+                        <p>{{item.time|time()}}</p>
                     </div>
                     <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
+                        <span class="left">{{item.buy[0].name}}等{{item.buy.length}}件商品</span>
+                        <span class="right">￥{{item.buy|money()}}</span>
                     </div>
                 </div>
                 <div class="order_item_bot">
-                        <button>评价得金币</button>
-                </div>
-            </li>
-            <li class="order_main_item">
-                <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
-                </div>
-                <div class="order_item_details">
-                    <div class="up">
-                        <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
-                            <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
-                        </div>
-                        <p>8小时37分钟前</p>
-                    </div>
-                    <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
-                    </div>
-                </div>
-                <div class="order_item_bot">
-                        <button>评价得金币</button>
-                </div>
-            </li>
-            <li class="order_main_item">
-                <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
-                </div>
-                <div class="order_item_details">
-                    <div class="up">
-                        <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
-                            <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
-                        </div>
-                        <p>8小时37分钟前</p>
-                    </div>
-                    <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
-                    </div>
-                </div>
-                <div class="order_item_bot">
-                        <button>评价得金币</button>
-                </div>
-            </li>
-            <li class="order_main_item">
-                <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
-                </div>
-                <div class="order_item_details">
-                    <div class="up">
-                        <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
-                            <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
-                        </div>
-                        <p>8小时37分钟前</p>
-                    </div>
-                    <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
-                    </div>
-                </div>
-                <div class="order_item_bot">
-                        <button>评价得金币</button>
-                </div>
-            </li>
-            <li class="order_main_item">
-                <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
-                </div>
-                <div class="order_item_details">
-                    <div class="up">
-                        <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
-                            <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
-                        </div>
-                        <p>8小时37分钟前</p>
-                    </div>
-                    <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
-                    </div>
-                </div>
-                <div class="order_item_bot">
-                        <button>评价得金币</button>
-                </div>
-            </li>
-            <li class="order_main_item">
-                <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
-                </div>
-                <div class="order_item_details">
-                    <div class="up">
-                        <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
-                            <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
-                        </div>
-                        <p>8小时37分钟前</p>
-                    </div>
-                    <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
-                    </div>
-                </div>
-                <div class="order_item_bot">
-                        <button>评价得金币</button>
-                </div>
-            </li>
-            <li class="order_main_item">
-                <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
-                </div>
-                <div class="order_item_details">
-                    <div class="up">
-                        <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
-                            <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
-                        </div>
-                        <p>8小时37分钟前</p>
-                    </div>
-                    <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
-                    </div>
-                </div>
-                <div class="order_item_bot">
-                        <button>评价得金币</button>
-                </div>
-            </li>
-            <li class="order_main_item">
-                <div class="order_item_logo">
-                    <img src="./img/ia_10003.jpeg">
-                </div>
-                <div class="order_item_details">
-                    <div class="up">
-                        <div>
-                            <span class="left">宜宾铁拐烧烤(弹子石店)</span>
-                            <i class="iconfont icon-gengduo"></i>
-                            <span class="right">订单已送达</span>
-                        </div>
-                        <p>8小时37分钟前</p>
-                    </div>
-                    <div class="down">
-                        <span class="left">鹌鹑蛋等12件商品</span>
-                        <span class="right">￥12.00</span>
-                    </div>
-                </div>
-                <div class="order_item_bot">
-                        <button>评价得金币</button>
+                        <button class="yes" v-if="item.eval">评价得金币</button>
+                        <button class="no" v-else>已评价</button>
                 </div>
             </li>
         </ul>
+        <div class="order_main_login" v-else>
+            <router-link to="/login">登录</router-link> 查看订单详情
+        </div>
     </div>
 </template>
 <script>
@@ -188,6 +38,21 @@
     export default {
         components: {
             HeaderTop
+        },
+        filters: {
+            money: function (arr) {
+                let res = 0
+                for (let i of arr) {
+                    res += i.price
+                }
+                return res.toFixed(2)
+            },
+            time: function (num) {
+                num = Date.now() - num
+                let hour = parseInt(num / 3600000)
+                let min = parseInt(num % 3600000 / 60000)
+                return `${hour}小时${min}分钟前`
+            }
         }
     }
 </script>
@@ -199,6 +64,14 @@
         margin-top: 12px;
         padding: 16px 0 12px 18px;
         background-color: #fff;
+    }
+    .order_main_login {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 200px;
+        a {
+            color: #008eff
+        }
     }
     .order_item_logo {
         float: left;
@@ -270,10 +143,15 @@
             line-height: 30px;
             text-align: center;
             background-color: #fff;
-            border: 1px solid #ff5339;
             border-radius: 2px;
             margin-top: 12px;
             margin-right: 12px;
+        }
+        .yes {
+            border: 1px solid #ff5339;
+        }
+        .no {
+            border: 1px solid #999;
         }
     }
 </style>

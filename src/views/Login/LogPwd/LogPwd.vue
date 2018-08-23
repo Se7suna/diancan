@@ -2,19 +2,19 @@
     <form class="logpwd">
         <div class="logpwd_user">
             <label for="user">用户名</label>
-            <input id="user" type="text" placeholder="用户名/手机/邮箱">
+            <input id="user" type="text" placeholder="用户名/手机/邮箱" v-model="id">
         </div>
         <div class="logpwd_pwd">
             <label for="pwd">密码&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input v-if="starOff" id="pwd" type="password" maxlength="16">
-            <input v-else id="pwd" type="text" maxlength="16">
+            <input v-if="starOff" id="pwd" type="password" maxlength="16" v-model="pwd">
+            <input v-else id="pwd" type="text" maxlength="16" v-model="pwd">
             <div class="logpwd_pwd_star" :class="{star_on: !starOff}" @click="starOff = !starOff">
                 <span :class="starOff ? 'star_off' : 'star_on'"></span>
             </div>
         </div>
         <div class="logpwd_code">
             <label for="pwd_code">验证码</label>
-            <input id="pwd_code" type="text" maxlength="6">
+            <input id="pwd_code" type="text" maxlength="6" v-model="code">
             <img class="logpwd_code_img" :src="imgUrl" @click="imgFresh()">
         </div>
     </form>
@@ -29,6 +29,9 @@
         },
         data () {
             return {
+                id: '',
+                pwd: '',
+                code: '',
                 starOff: true,
                 imgUrl: '',
                 regStr: ''

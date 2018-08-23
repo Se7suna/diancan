@@ -117,7 +117,59 @@ function createFoods () {
     }
     return foods
 }
-
+function createBuy () {
+    const num = Random.integer(5, 10)
+    let res = [{
+        name: '鹌鹑蛋',
+        price: 4
+    }]
+    for (let i = 0; i < num; i++) {
+        let obj = {
+            name: Random.ctitle(),
+            price: Random.integer(0, 100)
+        }
+        res.push(obj)
+    }
+    return res
+}
+function createOrder () {
+    const num = Random.integer(5, 10)
+    let res = [{
+        img: '../../static/img/ia_10003.jpeg',
+        shop: '宜宾铁拐烧烤(弹子石店)',
+        time: 1535006427207,
+        buy: createBuy(),
+        money: 12,
+        state: true,
+        eval: false
+    }]
+    let time = 1535006427207
+    for (let i = 0; i < num; i++) {
+        time -= Random.integer(999999, 9999999)
+        let obj = {
+            img: Random.dataImage('64x64', 'img!'),
+            shop: Random.ctitle(),
+            time: time,
+            buy: createBuy(),
+            money: Random.integer(0, 100),
+            state: Random.integer(0, 100) % 2 === 0,
+            eval: Random.integer(0, 100) % 2 === 0
+        }
+        res.push(obj)
+    }
+    return res
+}
+function createUser () {
+    let obj = {
+        id: Random.integer(100000, 999999),
+        phone: Random.integer(13000000000, 19000000000),
+        money: Random.integer(0, 999) + ' 元',
+        red: Random.integer(0, 100) + ' 红包',
+        gold: Random.integer(0, 100) + ' 金币',
+        order: createOrder()
+    }
+    return obj
+}
 Mock.mock('/address', Random.province() + Random.county())
 Mock.mock('/foodtype', [
     {
@@ -187,10 +239,4 @@ Mock.mock('/getPwdImg', function () {
             reg: exp
     })
 })
-Mock.mock('/user', {
-    id: '',
-    pwd: '',
-    code: '',
-    phone: '',
-    order: []
-})
+Mock.mock('/user', createUser())

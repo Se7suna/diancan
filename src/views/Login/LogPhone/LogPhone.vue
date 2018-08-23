@@ -3,14 +3,14 @@
         <div class="logphone_phone">
             <label>
                 手机号
-                <input id="phone" v-model="$store.state.login.phone" type="tel" maxlength="11">
+                <input id="phone" v-model="phone" type="tel" maxlength="11">
             </label>
             <button :disabled="pass" @click="phoneMsg()">{{showMsg}}</button>
         </div>
         <div class="logphone_code">
             <label>
                 验证码
-                <input id="phone_code" type="text" v-model="$store.state.login.code" maxlength="6">
+                <input id="phone_code" type="text" v-model="code" maxlength="6">
             </label>
         </div>
     </form>
@@ -19,6 +19,8 @@
     export default {
         data () {
             return {
+                phone: '',
+                code: '',
                 flag: true,
                 showMsg: '获取验证码'
             }
@@ -41,7 +43,7 @@
         computed: {
             pass () {
                 if (this.flag) {
-                    return !this.$store.getters.phoneExp
+                    return !/^1[0|3-9]\d{9}$/g.test(this.phone)
                 } else {
                     return true
                 }

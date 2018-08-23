@@ -3,16 +3,16 @@
         <HeaderTop :title="'我的'">
             <i slot="left" class="iconfont icon-fanhui header-left" @click="$router.back()"></i>
         </HeaderTop>
-        <div class="profile_login" @click="$router.push('/login')">
+        <div class="profile_login" @click="$store.state.user.id || $router.push('/login')">
             <div class="profile_login_left">
                 <div class="profile_left_log"></div>
                 <div class="profile_left_btn">
                     <div class="profile_btn_in">
-                        登录/注册
+                        {{$store.state.user.id || "登录/注册"}}
                     </div>
                     <div class="profile_btn_more">
                         <i class="iconfont icon-asmkticon0113"></i>
-                        登录后享受更多特权
+                        {{$store.state.user.phone || "登录后享受更多特权"}}
                     </div>
                 </div>
             </div>
@@ -25,19 +25,19 @@
                 <div class="profile_money_img">
                     <i class="iconfont icon-qian"></i>
                 </div>
-                <p>钱包</p>
+                <p>{{$store.state.user.money || "钱包"}}</p>
             </div>
             <div class="profile_purse_red">
                 <div class="profile_red_img">
                     <i class="iconfont icon-hongbao"></i>
                 </div>
-                <p>红包</p>
+                <p>{{$store.state.user.red || "红包"}}</p>
             </div>
             <div class="profile_purse_gold">
                 <div class="profile_gold_img">
                     <i class="iconfont icon-jinbi"></i>
                 </div>
-                <p>金币</p>
+                <p>{{$store.state.user.gold || "金币"}}</p>
             </div>
         </div>
         <ul class="profile_option">

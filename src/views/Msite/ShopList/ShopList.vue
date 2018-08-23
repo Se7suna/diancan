@@ -50,12 +50,20 @@
 <script>
     import Stars from '../../../components/Stars/Stars.vue'
     export default {
+        props: ['flag'],
         components: {
             Stars
         },
         computed: {
             shopSort () {
-                return this.$store.state.shops
+                let arr = JSON.parse(JSON.stringify(this.$store.state.shops))
+                 if (this.flag === 1) {
+                    return arr.sort((a, b) => b.info.sale.score - a.info.sale.score)
+                } else if (this.flag === 2) {
+                    return arr.sort((a, b) => a.info.cost.far - b.info.cost.far)
+                } else {
+                    return this.$store.state.shops
+                }
             }
         },
         methods: {

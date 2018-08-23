@@ -8,11 +8,6 @@ export default {
     shops: [],
     // 正在显示的商家
     showShop: {},
-    // 登录信息
-    login: {
-        id: '',
-        pwd: '',
-        code: '',
-        phone: ''
-    }
+    // 用户信息
+    user: {}
 }

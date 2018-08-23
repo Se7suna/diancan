@@ -5,24 +5,26 @@
                 {{$store.state.showShop.info.ad.jian}}
             </span>
         </div>
-        <div class="shopcar_main" v-if="show && car.length">
-            <div class="shopcar_main_top">
-                <div class="left">已选商品</div>
-                <div class="right">
-                    <i class="iconfont icon-huishouzhan"></i>
-                    <span @click="clearCar">清空</span>
-                </div>
-            </div>
-            <ul class="shopcar_main_list">
-                <li class="shopcar_main_item" v-for="item of car" :key="item.id">
-                    <div class="left">
-                        <span class="item">{{item.name}}</span>
-                        <span class="money">￥{{item.now * item.buy}}</span>
+        <transition name="car">
+            <div class="shopcar_main" v-if="show && car.length">
+                <div class="shopcar_main_top">
+                    <div class="left">已选商品</div>
+                    <div class="right">
+                        <i class="iconfont icon-huishouzhan"></i>
+                        <span @click="clearCar">清空</span>
                     </div>
-                    <CarCtrl :foodId="item.id" :buy="item.buy"/>
-                </li>
-            </ul>
-        </div>
+                </div>
+                <ul class="shopcar_main_list">
+                    <li class="shopcar_main_item" v-for="item of car" :key="item.id">
+                        <div class="left">
+                            <span class="item">{{item.name}}</span>
+                            <span class="money">￥{{item.now * item.buy}}</span>
+                        </div>
+                        <CarCtrl :foodId="item.id" :buy="item.buy"/>
+                    </li>
+                </ul>
+            </div>
+        </transition>
         <div class="shopcar_bot clearfix" @click="toggleCar()">
             <div class="left" :class="{haveBgc: car.length}">
                 <i class="iconfont icon-gouwuche1" :class="{haveCor: car.length}"></i>
@@ -250,5 +252,19 @@
         i.haveCor{
             color: #fff;
         }
+    }
+    .car-enter-active,
+    .car-leave-active{
+        transition: all 0.4s linear;
+    }
+    .car-enter,
+    .car-leave-to {
+        max-height: 0;
+        overflow: hidden;
+    }
+    .car-enter-to,
+    .car-leave {
+        max-height: 736px;
+        overflow: hidden;
     }
 </style>

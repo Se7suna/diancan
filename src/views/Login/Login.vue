@@ -12,8 +12,8 @@
                     密码登录
                 </span>
             </div>
-            <LogPhone v-if="isPhone"/>
-            <LogPwd v-else/>
+            <LogPhone ref="data" v-if="isPhone"/>
+            <LogPwd ref="data" v-else/>
             <p class="login_main_text">
                 温馨提示：未注册饿了么账号的手机号，登录时将自动注册，且代表您已同意
                 <a href="#">《用户服务协议》</a>
@@ -37,16 +37,34 @@
         },
         methods: {
             login () {
+                let data = this.$refs.data
                 if (this.isPhone) {
-                    if (!this.$store.getters.phoneExp) {
+                    if (!/^1[0|3-9]\d{9}$/g.test(data.phone)) {
                         console.log('手机号输出错误!')
                         return
                     }
-                    if (this.$store.state.login.code.length < 6) {
+                    if (data.code.length < 6) {
                         console.log('验证码输入错误!')
                         return
                     }
                     this.$store.dispatch('getUser')
+                    this.$router.back()
+                } else {
+                    if (!data.id) {
+                        console.log(data.id)
+                        console.log('请输入你的账号')
+                        return
+                    }
+                    if (!data.pwd) {
+                        console.log('请输入你的密码')
+                        return
+                    }
+                    if (data.code.length < 6) {
+                        console.log('验证码输入错误!')
+                        return
+                    }
+                    this.$store.dispatch('getUser')
+                    this.$router.back()
                 }
             },
             exit () {

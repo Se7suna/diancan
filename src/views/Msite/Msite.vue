@@ -2,7 +2,8 @@
     <div class="msite">
         <HeaderTop :title="$store.state.address">
             <i slot="left" class="iconfont icon-dingwei header-left"></i>
-            <router-link slot="right" class="header-right" to="/login">登录</router-link>
+            <router-link slot="right" class="header-right" to="/login" v-if="!$store.state.user.id">登录</router-link>
+            <span slot="right" class="header-right" v-else>已登录</span>
         </HeaderTop>
         <div class="swiper-container" v-if="foodTypes.length">
             <div class="swiper-wrapper">
@@ -39,13 +40,13 @@
                     <i class="iconfont icon-hengxian"></i>
                 </p>
                 <div class="msite-top-main">
-                    <span>综合排序<i class="iconfont icon-sort-small-copy-copy"></i></span>
-                    <span>好评优先</span>
-                    <span>距离最近</span>
+                    <span @click="flag = 0">综合排序<i class="iconfont icon-sort-small-copy-copy"></i></span>
+                    <span @click="flag = 1">好评优先</span>
+                    <span @click="flag = 2">距离最近</span>
                     <span>筛选<i class="iconfont icon-shaixuan"></i></span>
                 </div>
             </div>
-            <ShopList/>
+            <ShopList :flag="flag"/>
         </div>
         <Wait v-else/>
     </div>
@@ -56,6 +57,11 @@
     import ShopList from './ShopList/ShopList.vue'
     import Wait from '../../components/Wait/Wait.vue'
     export default {
+        data () {
+            return {
+                flag: 0
+            }
+        },
         mounted () {
             // 切换页面时 需要重新创建 swiper
             new Swiper('.swiper-container', {
