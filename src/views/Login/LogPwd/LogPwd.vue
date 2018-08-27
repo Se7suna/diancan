@@ -20,10 +20,11 @@
     </form>
 </template>
 <script>
-    import {reqPwdImg} from '../../../api'
+    import {reqCode} from '../../../api'
     export default {
         mounted () {
-            reqPwdImg().then(result => {
+            const URL = '/getcode'
+            reqCode(URL).then(result => {
                 this.imgUrl = result.url
             })
         },
@@ -39,7 +40,8 @@
         },
         methods: {
             imgFresh () {
-                reqPwdImg().then(result => {
+                const URL = '/getcode'
+                reqCode(URL).then(result => {
                     this.imgUrl = result.url
                     this.regStr = result.reg
                 })

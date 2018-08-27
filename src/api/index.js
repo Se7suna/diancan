@@ -9,7 +9,7 @@ export const reqFoodType = url => ajax(url)
 // 获取商家列表
 export const reqShops = url => ajax(url)
 // 获取验证码
-export const reqPwdImg = () => ajax('/getPwdImg')
+export const reqCode = url => ajax(url)
 // 获取商家食物列表
 export const reqFoods = url => ajax(url)
 // 用户登录请求

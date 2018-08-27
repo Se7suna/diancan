@@ -232,7 +232,7 @@ Mock.mock('/foodtype', [
 Mock.mock('/shops', createShops())
 Mock.mock('/foods', createFoods())
 // 模拟验证码
-Mock.mock('/getPwdImg', function () {
+Mock.mock('/getcode', function () {
     let exp = Mock.mock({'regexp': /\w{6}/}).regexp
     return Mock.mock({
             url: Mock.Random.dataImage('70x30', exp),
