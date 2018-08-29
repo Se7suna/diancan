@@ -1,6 +1,6 @@
 # diancan
 
-> A Vue.js project
+> 仿饿了吗demo源码
 
 ## Build Setup
 
