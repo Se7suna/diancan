@@ -33,8 +33,8 @@ yarn-error.log*
 # 4. git push origin test ---- 推送其他分支
 # 5. git remote -v ---- 查看远程库详情 (远程库默认 origin)
 #   GitHub操作
-#   1. ssh-keygen -t rsa -C "test@mail.com" ---- 创建SSH Key (在用户文档 id_rsa是私钥 id_rsa.pub是公钥)
-#   2. 在 GitHub 设置中添加 SSH Keys 为 id_rsa.pub 中的内容
+#   1. ssh-keygen -t rsa -C "test@mail.com" ---- 创建SSH Key 免密登录 (在用户文档 id_rsa是私钥 id_rsa.pub是公钥)
+#   2. 在 GitHub 设置中添加 SSH Keys 为 id_rsa.pub 中的内容 (推送时需要推送到SSH地址)
 #   3. 克隆远程库 创建时勾选 README
 #   4. git clone [Clone or download] ---- 克隆远程项目(clone命令会自动初始化仓库, 并且设置origin别名)
 
