@@ -32,6 +32,7 @@ yarn-error.log*
 # 3. git push -u origin master ---- 推送master分支到远程库 (第一次推送时 -u 关联分支)
 # 4. git push origin test ---- 推送其他分支
 # 5. git remote -v ---- 查看远程库详情 (远程库默认 origin)
+# 6. git remote remove <name> ---- 删除远程别名
 #   GitHub操作
 #   1. ssh-keygen -t rsa -C "test@mail.com" ---- 创建SSH Key 免密登录 (在用户文档 id_rsa是私钥 id_rsa.pub是公钥)
 #   2. 在 GitHub 设置中添加 SSH Keys 为 id_rsa.pub 中的内容 (推送时需要推送到SSH地址)
