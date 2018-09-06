@@ -1,0 +1,123 @@
+    1. 项目描述
+        a. 此项目为外卖Web App (SPA)
+        b. 包括商家, 商品, 购物车, 用户等多个模块
+        c. 使用Vue全家桶 + ES6 + WebPack 等前端技术
+        d. 采用模块化, 组件化, 工程化的模式开发
+    2. 功能界面
+        ...
+    3. 技术选型
+        a. 前台数据处理/交互/组件化
+                vue
+                vue-router
+                vuex
+                mint-ui
+                vue-lazyload
+                vue-scroller
+                better-scroll
+                swiper
+                moment
+                date-fns
+        b. 后台交互
+                mock数据: mock.js
+                接口测试: postman
+                ajax请求: axios
+        c. 模块化
+                ES6
+                babel
+        d. 项目构建/工程化
+                webpack
+                vue-cli
+                eslint
+        e. css预编译器
+                less
+    4. 前台路由
+        a. 一级路由
+                I. 首页
+                    /msite
+                    Msite.vue
+                II. 搜索
+                    /search
+                    Search.vue
+                III. 订单
+                    /order
+                    Order.vue
+                IV. 个人
+                    /profile
+                    Profile.vue
+                V. 登录
+                    /login
+                    Login.vue
+                VI. 商家
+                    /shop
+                    Shop.vue
+        b. 二级路由
+                I. 商家商品
+                    /goods
+                    /ShopGoods.vue
+                II. 商家评价
+                    /ratings
+                    /ShopRatings.vue
+                III. 商家信息
+                    /info
+                    /ShopInfo.vue
+    5. API 接口
+        全称: 前后台交互 API 接口
+        重要概念:
+                a. API (接口)
+                    请求:
+                        I. 请求地址
+                        II. 请求方式
+                        III. 参数格式
+                    响应:
+                        I. 响应数据格式
+                b. 接口文档
+                        接口描述,参数
+                c. 对接口
+                        检查接口和文档是否一致
+                d. 联调
+                        调试接口连接是否正常
+                e. 前后台分离
+                        I. 前台提交请求, 获取数据, 动态展现 
+                        II. 后台处理请求, 返回数据
+                f. mock数据
+                        模拟数据测试
+
+api --- 与后台交互模块文件夹
+common --- 通用资源文件夹 (fonts/img/stylus)
+components --- 非路由组件文件夹
+filters --- 自定义过滤器模块文件夹
+mock --- 模拟数据接口文件夹
+views/pages --- 路由组件文件夹
+router --- 路由器文件夹
+store --- vuex相关模块文件夹
+App.vue  应用组件
+main.js  入口 js
+
+流程
+    1. reset.css
+    2. fastclick
+    3. 创建路由器对象 router/index.js
+    4. 引入路由
+    5. 测试路由
+    6. 编写组件
+    7. 移动适配 px2rem-loader + lib-flexible
+    8. 编写相关 ajax请求
+    9. config --- index.js 配置 proxyTable 本地跨域
+    10. vuex 管理数据
+
+config index.js --- assetsPublicPath: './' --- 解决图片路径问题
+build utils.js --- publicPath: '../../' --- 解决css背景图片问题
+
+可视化打包 npm run build --report
+日期插件 date-fns
+
+坑:
+    对比数字前 先注意数据类型
+    Vue.set 给后添加的数据增加监听
+    v-if 解决解决 undefined 报错
+    watch + this.$nextTick(callback) 解决创建时机问题
+    native 修饰符 解决组件原生事件无效问题
+    重新设置 图片 src 可以刷新图片(在路径后面加一个查询参数)
+    小数计算不精准 res.toFixed(2) 可将结果保留两位小数
+    单例模式 可以将创建的对象保存到 Vue实例 this 里面
+    路由push跳转和 replace跳转 历史记录
