@@ -4,64 +4,6 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# 设置签名
-# 仓库级别: 尽在当前本地库范围内有效
-#     git config user.name setsuna
-#     git config user.email setsuna@wo.cn
-# 系统级别: 登录当前操作系统的用户范围(git config --global)
-# 级别优先级: 必须设置, 仓库级别优先
-
-# 本地仓库
-# 1. git init ---- 创建仓库
-# 2. git add * ---- 添加到暂缓区
-# 3. git commit -m "test" ---- 提交到分支 (-m "提交说明")
-#     本地操作
-#     1. git status ---- 查看当前库状态
-#     2. git diff [HEAD^] test.txt ---- 查看文件修改内容 (不带参数是和缓存区比较, 在文件名前加入历史版本 则和历史版本比较)
-#     3. git log ---- 查看之前的版本记录 (git log --oneline 简洁显示)
-#     4. git reset --hard HEAD^ ---- 退回到上一个版本 (HEAD 表示当前版本 ^ 前一个版本 ~n 前n个版本)
-#     5. git reset --hard 10bh94a ---- 回到指定版本 (参数为commit 哈希前几位)
-#     6. git reflog ---- 查看所有的版本记录
-#     7. git checkout -- test.txt ---- 放弃修改文件 (回到最近一次git commit或git add时的状态, 可以找回删除文件)
-#     8. git reset HEAD test.txt ---- 从暂缓区去除文件
-#     9. git rm test.txt ---- 从暂缓区删除文件 (使用git rm <file>和git add<file>效果是一样的)
-
-# 远程仓库
-# 1. github 上创建新项目 (只填写仓库名称 其他默认)
-# 2. git remote add origin https://github.com/Se7suna/test.git ---- 关联远程库
-# 3. git push -u origin master ---- 推送master分支到远程库 (第一次推送时 -u 关联分支)
-# 4. git push origin test ---- 推送其他分支
-# 5. git remote -v ---- 查看远程库详情 (远程库默认 origin)
-# 6. git remote remove <name> ---- 删除远程别名
-#   GitHub操作
-#   1. ssh-keygen -t rsa -C "test@mail.com" ---- 创建SSH Key 免密登录 (在用户文档 id_rsa是私钥 id_rsa.pub是公钥)
-#   2. 在 GitHub 设置中添加 SSH Keys 为 id_rsa.pub 中的内容 (推送时需要推送到SSH地址)
-#   3. 克隆远程库 创建时勾选 README
-#   4. git clone [Clone or download] ---- 克隆远程项目(clone命令会自动初始化仓库, 并且设置origin别名)
-
-# 分支操作
-# 1. git checkout -b feature ---- 创建feature分支 (-b 并切换到该分支)
-# 2. git checkout xxx ---- 切换到指定分支
-# 3. git branch ---- 查看分支 (* 表示当前分支)
-# 4. git branch feature_test ---- 创建feature_test分支
-# 5. git branch -d xxx ---- 删除指定分支
-# 6. git merge xxx ---- 合并指定分支到当前分支(合并冲突 需要去冲突文件手动合并)
-# 7. git status ---- 也可以查看合并冲突提示
-# 8. git merge --no-ff -m "text" test ---- 使用普通模式合并分支 (合并后保留分支的commit历史)
-# 9. git stash ---- 临时储存暂缓区
-# 10. git stash list ---- 查看临时暂缓区
-# 11. git stash pop ---- 还原暂缓区内容, 并清空暂缓区
-# 12. git branch -D test ---- 强行删除未合并的分支 (-D 大写)
-# 13. git checkout -b dev origin/dev ---- 创建本地dev分支并连接到origin的dev分支
-# 14. git branch --set-upstream-to master origin/master ---- 连接本地dev分支与origin的dev分支
-# 15. git pull ---- 抓取origin上的最新提交(fetch[远程库地址别名][远程分支名] + merge[远程库地址别名/远程分支名])
-# 16. git tag v1.0 ---- 给当前 commit 添加标签(用-a指定标签名 -m指定说明文字)
-# 17. git tag ---- 查看标签
-# 18. git tag v0.9 git tag v0.9 f52c633 ---- 给指定 commit 添加标签
-# 19. git show v1.0 ---- 查看标签信息
-# 20. git tag -d v0.1 ---- 删除标签
-# 21. git push origin --tags ---- 可以推送全部未推送过的本地标签
-# 22. git push origin :refs/tags/<tagname> ---- 可以删除一个远程标签。
 
 .idea
 .vscode
